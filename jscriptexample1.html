@@ -176,6 +176,10 @@
 <body>
 	<h2>JavaScript Examples</h2>
 	<h3>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h3>
+	<p><b>This section shows the code in action. Simply put, we're intputting a number, then finding all the odd numbers
+	etween 0 and the number inputted. Then we're adding those up to get the sum. Pointless, but it lets me use <thead>
+	required components.</b></p>
+		</thead>
 	<p>In the box below, type a number that is between 1 and 100 into each of the boxes below, then click OK.</p>
 	<p><input type="text" id="box1" size="3" value="0"> <button type="button" onclick="getValueInputs()" >OK</button></p>
 	<p><div id="outputdiv"></div></p>
@@ -229,5 +233,33 @@
 	    result = result + ", " + i;
 	    valueList[i] = oddSumList(i);
 	}</pre></p>
+	<p><b>Functions:</b> There are several functions used in this code, some with parameters, and some without. I'll cover
+	the ones with parameters in the parameter section. The only one without a parameter is the first one, "getValueInputs".
+	This function gets the user's input, validates it, and then either says the input is invalid or sends it on to the next
+	steps.</p>
+	<p><pre>	function getValueInputs() {
+	  var number = parseInt(document.getElementById('box1').value);
+	  if (isNaN(number) || number < 1 || number > 100) {
+	    resultOutput = "Input not valid. Please enter a number between 1 an 100.";
+	    document.getElementById('outputdiv').innerHTML = resultOutput;
+	    document.getElementById('outputdiv2').innerHTML = ""
+	    document.getElementById('outputdiv3').innerHTML = "";
+	  } else {
+	    oddSum(number);
+	    oddList(number);
+	  }
+	}</pre></p>
+	<p><b>Variables:</b> Variables are one of the most frequent components of any script, since they're used as placeholders
+	for values the script uses. I have several throughout my script, but a few examples are:</p>
+	<p><pre>	var i = 1 ;</pre></p>
+	<p>which declares a variable named "i" and assigns it the number 1. Also, </p>
+	<p><pre>	var number = parseInt(document.getElementById('box1').value);</pre></p>
+	<p>which declares the variable "number" and takes the number from the text box and assigns it. And then there is this one:</p>
+	<p><pre>	valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';</pre></p>
+	<p>which takes an already declared variable, and the sentence listed to what's aleady assigned in that variable. Another common
+	variable action is this one:</p>
+	<p><pre>i++</pre></p>
+	<p>which takes a numeric variable and increases it by 1. So if "i" equals 5, and it does "i++", then the new value is 6.</p>
+
 </body>
 </html>
