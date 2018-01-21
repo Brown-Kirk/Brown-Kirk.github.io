@@ -45,8 +45,8 @@
 			***			where "else" is and add in another condition, if we wanted. There can be as many "else if" as you wanted
 			***			but only 1 if and 1 else.
 			*/
-			if (isNaN(number) || number < 1 || number > 100000) {
-					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
+			if (isNaN(number) || number < 1 || number > 100) {
+					resultOutput = "Input not valid. Please enter a number between 1 an 100.";
 					document.getElementById('outputdiv').innerHTML = resultOutput;
 					document.getElementById('outputdiv2').innerHTML = ""
 					document.getElementById('outputdiv3').innerHTML = "";
@@ -176,14 +176,58 @@
 <body>
 	<h2>JavaScript Examples</h2>
 	<h3>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h3>
-	In the box below, type a number that is between 1 and 100,000 into each of the boxes below, then click OK.<br>
-	<input type="text" id="box1" size="3" value="0"><br>
-	<br>
-	<button type="button" onclick="getValueInputs()" >OK</button><br>
-	<br>
-	<div id="outputdiv"></div><br>
-	<div id="outputdiv2"></div><br>
-	<div id="outputdiv3"></div>
-
+	<p>In the box below, type a number that is between 1 and 100 into each of the boxes below, then click OK.</p>
+	<p><input type="text" id="box1" size="3" value="0"> <button type="button" onclick="getValueInputs()" >OK</button></p>
+	<p><div id="outputdiv"></div></p>
+	<p><div id="outputdiv2"></div></p>
+	<p><div id="outputdiv3"></div></p>
+	<h3>Fluency components:</h3>
+	<p><b>Loops:</b> Loops are used thorughout the script. The first example is where we loop through all of the numbers
+	between 1 and the input number, adding the values of only the odd numbers.</p>
+	<p><pre>	for (i = number1 ; i > 0; i--) {
+	  if (i % 2 != 0) {
+	    result = result + i;
+	  }
+	}</pre></p>
+	<p>We also loop through an array. This is in the section where we are collecting all of the statements
+	about "the sum of all the odd numbers between..." to list out all of the sums between 1 and the input number.</p>
+	<p><pre>	for(var i in valueList) {
+	  if(i > 0) {
+	    valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
+	  }
+	}</pre></p>
+	<p><b>Conditional Statements:</b> Conditional statements can be found throughout the script as well. They are used
+	to check for valid inputs:</p>
+	<p><pre>	if (isNaN(number) || number < 1 || number > 100) {
+	  resultOutput = "Input not valid. Please enter a number between 1 an 100.";
+	  document.getElementById('outputdiv').innerHTML = resultOutput;
+	  document.getElementById('outputdiv2').innerHTML = ""
+	  document.getElementById('outputdiv3').innerHTML = "";
+	} else {
+	  oddSum(number);
+	  oddList(number);
+	}</pre></p>
+	<p>Separate odd and even numbers:</p>
+	<p><pre>	if (i % 2 != 0) {
+	  result = result + i;
+	}</pre></p>
+	<p>Find the last number in a series:</p>
+	<p><pre>	switch(i) {
+	  case 1:
+	    result = 1;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  case number2:
+	    result = result + ", and " + i;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  case number2 - 1:
+	    result = result + ", and " + i;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  default:
+	    result = result + ", " + i;
+	    valueList[i] = oddSumList(i);
+	}</pre></p>
 </body>
 </html>
