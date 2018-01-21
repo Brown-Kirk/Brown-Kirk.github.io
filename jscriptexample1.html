@@ -80,6 +80,13 @@
 						***	"i--" part). It repeats this process over and over, until the value of "i" is greater than 0 (this is the
 						***	"i > 0" part). Then it proceeds on to the rest of the function.
 						*/
+						if (number1 % 2 != 0) {
+							var oddNumber = [];
+							oddNumber["isItOdd"] = "odd";
+						} else {
+							var oddNumber = [];
+							oddNumber["isItOdd"] = "even";
+						}
 						for (i = number1 ; i > 0; i--) {
 							if (i % 2 != 0) {
 								result = result + i;
@@ -87,7 +94,7 @@
 						}
 					/* Output:  Display the sum result of adding the odd numbers from 1 to the entered number
 					*/
-				resultOutput = "The sum of all the odd numbers between zero and " + number1 + " is " + result + "."
+				resultOutput = "The sum of all the odd numbers between zero and the " + oddNumber["isItOdd"] + " number " + number1 + " is " + result + "."
 				document.getElementById('outputdiv').innerHTML = resultOutput;
 			}
 			function oddSumList(number1) {
@@ -315,5 +322,17 @@ oddList(number);</pre></p>
 	    valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
 	  }
 	}</pre></p>
+	<p><b>Associative Arrays:</b> In JavaScript, associative arrays are not the same as what we normally think of as associative arrays.
+	 Rather than being multi-dimensional, they are simply arrays with named indexes rather than numbered. In the example below, rather than
+	 an index of 1, the index is "isItOdd".
+	<p><pre>	if (i % 2 != 0) {
+	  result = result + i;
+	  var oddNumber = [];
+	  oddNumber["isItOdd"] = "isItOdd";
+	} else {
+	  var oddNumber = [];
+	  oddNumber["isItOdd"] = "even";
+	}</pre></p>
+	<p>In order to retrieve this value, instead of saying "oddnumber[1]", we would say "oddNumber["isItOdd"]"
 </body>
 </html>
