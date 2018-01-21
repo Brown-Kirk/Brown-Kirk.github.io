@@ -260,6 +260,60 @@
 	variable action is this one:</p>
 	<p><pre>i++</pre></p>
 	<p>which takes a numeric variable and increases it by 1. So if "i" equals 5, and it does "i++", then the new value is 6.</p>
-
+	<p><b>Parameters:</b> Parameters are values that are passed into a function. Remember above where we declared the variable
+	"number" and assigned it a value? Well, what we did next was to pass that value into two functions.<p>
+	<p><pre>	oddSum(number);
+oddList(number);</pre></p>
+	<p>If we follow that into the function, we can see what happens with that variable:</p>
+	<p><pre>	function oddSum(number1) {
+	  var i = 1 ;
+	  var result = 0;
+	  if (number1 < 1 ) {
+	    return 0;
+	  }
+	  for (i = number1 ; i > 0; i--) {
+	    if (i % 2 != 0) {
+	      result = result + i;
+	    }
+	  }
+	  resultOutput = "The sum of all the odd numbers between zero and " + number1 + " is " + result + "."
+	  document.getElementById('outputdiv').innerHTML = resultOutput;
+	}</pre></p>
+	<p>The "number" variable that was passed into the function becomes the new variable "number1" and is used throughout the
+	function.</p>
+	<p><b>Arrays:</b> We use an array when we're collecting the sums of all of the odd numbers:</p>
+	<p><pre>	var valueList = [];
+	for (i = 1 ; i <= number2; i++) {
+	  if (i % 2 != 0) {
+	    switch(i) {
+	      case 1:
+	        result = 1;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      case number2:
+	        result = result + ", and " + i;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      case number2 - 1:
+	        result = result + ", and " + i;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      default:
+	        result = result + ", " + i;
+	        valueList[i] = oddSumList(i);
+	    }
+	  } else {
+	    if (i < number2) {
+	      valueList[i] = valueList[i-1];
+	    }
+	  }
+	}</pre></p>
+	<p>Based on this code, it is processing through several conditions, and then assigning a value to one of the elements
+	of the array. Later, process through the array and retrieve those values:</p>
+	<p><pre>	for(var i in valueList) {
+	  if(i > 0) {
+	    valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
+	  }
+	}</pre></p>
 </body>
 </html>
