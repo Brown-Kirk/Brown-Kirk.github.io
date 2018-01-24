@@ -4,10 +4,7 @@
 <head>
 <meta charset="utf-8">
 	<title>JavaScript Object Examples</title>
-  // <script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script type="text/javascript">
-
-	var relative1 = {firstname:"Charles", middlename:"Leslie", lastname:"Brown",relationship:"Great-Great Grandfather"}
-	var relative2 = {firstname:"Kathryn", middlename:"Eunice", lastname:"Peck",relationship:"Great-Great Grandmother"}
+  <script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script type="text/javascript">
 	function Person(firstname, middlename, lastname) {
 		this.firstname = firstname;
 		this.middlename = middlename;
@@ -17,11 +14,20 @@
 		Person.call(this, firstname, middlename, lastname);
 		this.relatioship = relationship;
 	}
-	var relative1 = new Relative("William", "Nelson", "Brown", "Great-Great-Great Grandfather")
-	var relative2 = new Relative("Sarah", "Jane", "Hart", "Great-Great-Great Grandmother")
-	resultOutput = relative1.firstname + " " + relative1.middlename + " " + relative1.lastname + " was my " + relative1.relationship + ".";
-	resultOutput2 = relative2.firstname + " " + relative2.middlename + " " + relative2.lastname + " was my " + relative2.relationship + ".";
-	document.getElementById('outputdiv').innerHTML = resultOutput;
+	function(setRelatives) {
+		var relative1 = {firstname:"Charles", middlename:"Leslie", lastname:"Brown",relationship:"Great-Great Grandfather"}
+		var relative2 = {firstname:"Kathryn", middlename:"Eunice", lastname:"Peck",relationship:"Great-Great Grandmother"}
+		var relative3 = new Relative("Charles", "Leslie", "Brown", "Great-Great Grandfather")
+		var relative4 = new Relative("Kathryn", "Eunice", "Peck", "Great-Great Grandmother")
+		resultOutput = relative1.firstname + " " + relative1.middlename + " " + relative1.lastname + " was my " + relative1.relationship + ".";
+		resultOutput2 = relative2.firstname + " " + relative2.middlename + " " + relative2.lastname + " was my " + relative2.relationship + ".";
+		resultOutput3 = relative3.firstname + " " + relative3.middlename + " " + relative3.lastname + " was my " + relative3.relationship + ".";
+		resultOutput4 = relative4.firstname + " " + relative4.middlename + " " + relative4.lastname + " was my " + relative4.relationship + ".";
+		document.getElementById('outputdiv').innerHTML = resultOutput;
+		document.getElementById('outputdiv').innerHTML = resultOutput2;
+		document.getElementById('outputdiv').innerHTML = resultOutput3;
+		document.getElementById('outputdiv').innerHTML = resultOutput4;
+	}
 	</script>
 
 </head>
@@ -33,7 +39,7 @@
 	components.</b></p>
 		</thead>
 	<p>In the box below, type a number that is between 1 and 100 into each of the boxes below, then click OK.</p>
-	<p><input type="text" id="box1" size="3" value="0"> <button type="button" onclick="getValueInputs()" >OK</button></p>
+	<p><button type="button" onclick="setRelatives()" >OK</button></p>
 	<p><div id="outputdiv"></div></p>
 	<p><div id="outputdiv2"></div></p>
 	<p><div id="outputdiv3"></div></p>
