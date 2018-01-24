@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+	<title>JavaScript Object Examples</title>
+  // <script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script type="text/javascript">
+
+	var relative1 = {firstname:"Charles", middlename:"Leslie", lastname:"Brown",relationship:"Great-Great Grandfather"}
+	var relative2 = {firstname:"Kathryn", middlename:"Eunice", lastname:"Peck",relationship:"Great-Great Grandmother"}
+	function Person(firstname, middlename, lastname) {
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.lastname = lastname;
+	}
+	function Relative(firstname, middlename, lastname, relastionship) {
+		Person.call(this, firstname, middlename, lastname);
+		this.relatioship = relationship;
+	}
+	var relative1 = new Relative("William", "Nelson", "Brown", "Great-Great-Great Grandfather")
+	var relative2 = new Relative("Sarah", "Jane", "Hart", "Great-Great-Great Grandmother")
+	resultOutput = relative1.firstname + " " + relative1.middlename + " " + relative1.lastname + " was my " + relative1.relationship + ".";
+	resultOutput2 = relative2.firstname + " " + relative2.middlename + " " + relative2.lastname + " was my " + relative2.relationship + ".";
+	document.getElementById('outputdiv').innerHTML = resultOutput;
+	</script>
+
+</head>
+<body>
+	<h2>JavaScript Examples</h2>
+	<h3>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h3>
+	<p><b>This section shows the code in action. Simply put, we're intputting a number, then finding all the odd numbers
+	between 0 and the number inputted. Then we're adding those up to get the sum. Pointless, but it lets me use required
+	components.</b></p>
+		</thead>
+	<p>In the box below, type a number that is between 1 and 100 into each of the boxes below, then click OK.</p>
+	<p><input type="text" id="box1" size="3" value="0"> <button type="button" onclick="getValueInputs()" >OK</button></p>
+	<p><div id="outputdiv"></div></p>
+	<p><div id="outputdiv2"></div></p>
+	<p><div id="outputdiv3"></div></p>
+	<h3>Fluency components:</h3>
+	<p><b>Loops:</b> Loops are used throughout the script. The first example is where we loop through all of the numbers
+	between 1 and the input number, adding the values of only the odd numbers.</p>
+	<p><pre>	for (i = number1 ; i > 0; i--) {
+	  if (i % 2 != 0) {
+	    result = result + i;
+	  }
+	}</pre></p>
+	<p>We also loop through an array. This is in the section where we are collecting all of the statements
+	about "the sum of all the odd numbers between..." to list out all of the sums between 1 and the input number.</p>
+	<p><pre>	for(var i in valueList) {
+	  if(i > 0) {
+	    valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
+	  }
+	}</pre></p>
+	<p><b>Conditional Statements:</b> Conditional statements can be found throughout the script as well. They are used
+	to check for valid inputs:</p>
+	<p><pre>	if (isNaN(number) || number < 1 || number > 100) {
+	  resultOutput = "Input not valid. Please enter a number between 1 an 100.";
+	  document.getElementById('outputdiv').innerHTML = resultOutput;
+	  document.getElementById('outputdiv2').innerHTML = ""
+	  document.getElementById('outputdiv3').innerHTML = "";
+	} else {
+	  oddSum(number);
+	  oddList(number);
+	}</pre></p>
+	<p>Separate odd and even numbers:</p>
+	<p><pre>	if (i % 2 != 0) {
+	  result = result + i;
+	}</pre></p>
+	<p>Find the last number in a series:</p>
+	<p><pre>	switch(i) {
+	  case 1:
+	    result = 1;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  case number2:
+	    result = result + ", and " + i;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  case number2 - 1:
+	    result = result + ", and " + i;
+	    valueList[i] = oddSumList(i);
+	    break;
+	  default:
+	    result = result + ", " + i;
+	    valueList[i] = oddSumList(i);
+	}</pre></p>
+	<p><b>Functions:</b> There are several functions used in this code, some with parameters, and some without. I will cover
+	the ones with parameters in the parameter section. The only one without a parameter is the first one, "getValueInputs".
+	This function gets the user's input, validates it, and then either says the input is invalid or sends it on to the next
+	steps.</p>
+	<p><pre>	function getValueInputs() {
+	  var number = parseInt(document.getElementById('box1').value);
+	  if (isNaN(number) || number < 1 || number > 100) {
+	    resultOutput = "Input not valid. Please enter a number between 1 an 100.";
+	    document.getElementById('outputdiv').innerHTML = resultOutput;
+	    document.getElementById('outputdiv2').innerHTML = ""
+	    document.getElementById('outputdiv3').innerHTML = "";
+	  } else {
+	    oddSum(number);
+	    oddList(number);
+	  }
+	}</pre></p>
+	<p><b>Variables:</b> Variables are one of the most frequent components of any script, since they are used as placeholders
+	for values the script uses. I have several throughout my script, but a few examples are:</p>
+	<p><pre>	var i = 1 ;</pre></p>
+	<p>which declares a variable named "i" and assigns it the number 1. Also, </p>
+	<p><pre>	var number = parseInt(document.getElementById('box1').value);</pre></p>
+	<p>which declares the variable "number" and takes the number from the text box and assigns it. And then there is this one:</p>
+	<p><pre>	valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';</pre></p>
+	<p>which takes an already declared variable, and the sentence listed to what is aleady assigned in that variable. Another common
+	variable action is this one:</p>
+	<p><pre>i++</pre></p>
+	<p>which takes a numeric variable and increases it by 1. So if "i" equals 5, and it does "i++", then the new value is 6.</p>
+	<p><b>Parameters:</b> Parameters are values that are passed into a function. Remember above where we declared the variable
+	"number" and assigned it a value? Well, what we did next was to pass that value into two functions.<p>
+	<p><pre>	oddSum(number);
+oddList(number);</pre></p>
+	<p>If we follow that into the function, we can see what happens with that variable:</p>
+	<p><pre>	function oddSum(number1) {
+	  var i = 1 ;
+	  var result = 0;
+	  if (number1 < 1 ) {
+	    return 0;
+	  }
+	  for (i = number1 ; i > 0; i--) {
+	    if (i % 2 != 0) {
+	      result = result + i;
+	    }
+	  }
+	  resultOutput = "The sum of all the odd numbers between zero and " + number1 + " is " + result + "."
+	  document.getElementById('outputdiv').innerHTML = resultOutput;
+	}</pre></p>
+	<p>The "number" variable that was passed into the function becomes the new variable "number1" and is used throughout the
+	function.</p>
+	<p><b>Arrays:</b> We use an array when we're collecting the sums of all of the odd numbers:</p>
+	<p><pre>	var valueList = [];
+	for (i = 1 ; i <= number2; i++) {
+	  if (i % 2 != 0) {
+	    switch(i) {
+	      case 1:
+	        result = 1;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      case number2:
+	        result = result + ", and " + i;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      case number2 - 1:
+	        result = result + ", and " + i;
+	        valueList[i] = oddSumList(i);
+	        break;
+	      default:
+	        result = result + ", " + i;
+	        valueList[i] = oddSumList(i);
+	    }
+	  } else {
+	    if (i < number2) {
+	      valueList[i] = valueList[i-1];
+	    }
+	  }
+	}</pre></p>
+	<p>Based on this code, it is processing through several conditions, and then assigning a value to one of the elements
+	of the array. Later, process through the array and retrieve those values:</p>
+	<p><pre>	for(var i in valueList) {
+	  if(i > 0) {
+	    valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
+	  }
+	}</pre></p>
+	<p><b>Associative Arrays:</b> In JavaScript, associative arrays are not the same as what we normally think of as associative arrays.
+	 Rather than being multi-dimensional, they are simply arrays with named indexes rather than numbered. In the example below, rather than
+	 an index of 1, the index is "isItOdd".
+	<p><pre>	if (i % 2 != 0) {
+	  result = result + i;
+	  var oddNumber = [];
+	  oddNumber["isItOdd"] = "isItOdd";
+	} else {
+	  var oddNumber = [];
+	  oddNumber["isItOdd"] = "even";
+	}</pre></p>
+	<p>In order to retrieve this value, instead of saying "oddnumber[1]", we would say "oddNumber["isItOdd"]"
+</body>
+</html>
