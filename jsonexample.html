@@ -4,7 +4,7 @@
 
       <script type = "application/javascript">
          function loadJSON(){
-            var data_file = "http://www.tutorialspoint.com/json/data.json";
+            var data_file = "https://launchlibrary.net/1.3/launch/next/1";
             var http_request = new XMLHttpRequest();
             try{
                // Opera 8.0+, Firefox, Chrome, Safari
@@ -13,9 +13,9 @@
                // Internet Explorer Browsers
                try{
                   http_request = new ActiveXObject("Msxml2.XMLHTTP");
-
+					
                }catch (e) {
-				
+
                   try{
                      http_request = new ActiveXObject("Microsoft.XMLHTTP");
                   }catch (e){
@@ -32,11 +32,18 @@
                if (http_request.readyState == 4  ){
                   // Javascript function JSON.parse to parse JSON data
                   var jsonObj = JSON.parse(http_request.responseText);
+                  document.getElementById("stringify").innerHTML = JSON.stringify(jsonObj);
+                  var launchstart = jsonObj.launches[0].windowstart;
+                  var launchend = jsonObj.launches[0].windowend;
+                  var launchwindowfull = launchstart + " - " + launchend;
+                  document.getElementById("launchwindow").innerHTML = launchwindowfull;
+                  document.getElementById("launchsite").innerHTML = jsonObj.launches[0].location.pads[0].name;
+                  document.getElementById("rocketname").innerHTML = jsonObj.launches[0].rocket.name;
+                  document.getElementById("rocketagency").innerHTML = jsonObj.launches[0].rocket.agencies[0].name;
 
-                  // jsonObj variable now contains the data structure and can
-                  // be accessed as jsonObj.name and jsonObj.country.
-                  document.getElementById("Name").innerHTML = jsonObj.name;
-                  document.getElementById("Country").innerHTML = jsonObj.country;
+                  //document.getElementById("launchend").innerHTML = jsonObj.launches[0].missions[0].description;
+                  document.getElementById("mission").innerHTML = jsonObj.launches[0].missions[0].name;
+                  document.getElementById("details").innerHTML = jsonObj.launches[0].missions[0].description;
                }
             }
 
@@ -46,19 +53,27 @@
 
       </script>
 
-      <title>tutorialspoint.com JSON</title>
+      <title>JSON Demonstration</title>
    </head>
 
    <body>
-      <h1>Cricketer Details</h1>
-
-      <table class = "src">
-         <tr><th>Name</th><th>Country</th></tr>
-         <tr><td><div id = "Name">Sachin</div></td>
-         <td><div id = "Country">India</div></td></tr>
-      </table>
-
-      <div class = "central">
+     <h1>JSON retrieval</h1>
+     <p>This page retrieves information from https://launchlibrary.net as JSON file, then parses that file to provide various details. A demonstration of using stringify to display the raw JSON follows the detail sections.</p>
+     <h3>Launch Window</h3>
+     <p><div id = "launchwindow">After clicking /"Update Details/" this will display the launch window.</div></p>
+     <h3>Launch Site</h3>
+     <p><div id = "launchsite">After clicking /"Update Details/" this will display the launch location.</div></p>
+     <h3>Rocket Name</h3>
+     <p><div id = "rocketname">After clicking /"Update Details/" this will display the launch location.</div></p>
+     <h3>Rocket Owner</h3>
+     <p><div id = "rocketagency">After clicking /"Update Details/" this will display the launch location.</div></p>
+     <h3>Mission Name</h3>
+     <p><div id = "mission">After clicking /"Update Details/" this will display name of the mission for the launch.</div></p>
+     <h3>Mission Details</h3>
+     <p><div id = "details">After clicking /"Update Details/" this will display details of the mission for the launch.</div></p>
+     <h3>Raw JSON Values</h3>
+     <p> <div id = "stringify">After clicking /"Update Details/" this will display the JSON in string format</div></p>
+     <div class = "central">
          <button type = "button" onclick = "loadJSON()">Update Details </button>
       </div>
 
