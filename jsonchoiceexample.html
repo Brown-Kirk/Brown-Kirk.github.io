@@ -26,11 +26,15 @@
         http_request.onreadystatechange = function(){
           if (http_request.readyState == 4  ){
             var jsonObj = JSON.parse(http_request.responseText);
-            document.getElementById( "central" ).innerHTML = "";
+            //document.getElementById( "central" ).innerHTML = "";
             for(var i in jsonObj.launches) {
               localStorage.setItem("launchcount",i);
               var launchnumber = jsonObj.launches[i].id;
               var launchelementID = "launchchoice" + i;
+              var elem = document.getElementById(launchelementID);
+              if (elem != null) {
+                elem.parentNode.removeChild(elem);
+              }
               var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
               var div = document.createElement('div');
               div.id = launchelementID;
@@ -67,11 +71,13 @@
         http_request.onreadystatechange = function(){
           if (http_request.readyState == 4  ){
             var jsonObj2 = JSON.parse(http_request.responseText);
-            document.getElementById( "central" ).innerHTML = "";
+            //var elem = document.getElementById("central");
+            //elem.parentNode.removeChild(elem);
             var launchcount = localStorage.getItem("launchcount");
             do {
               var launchelementID = "launchchoice" + launchcount;
-              document.getElementById(launchelementID).innerHTML = ""
+              var elem = document.getElementById(launchelementID);
+              elem.parentNode.removeChild(elem);
               launchcount--;
             }
             while (launchcount >= 0);
