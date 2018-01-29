@@ -1,2 +1,1 @@
-Here are the contents of the AJAX text file. This is just a simple text file, nothing special. However, it can also contain code, so you must be careful and conscious of the security of this file.
-<h3>Here is an example of HTML embedded in a simple text file.</h3>
+https://launchlibrary.net/1.3/launch/next/5
