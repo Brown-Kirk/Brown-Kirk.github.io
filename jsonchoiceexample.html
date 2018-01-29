@@ -20,7 +20,8 @@
       	xmlhttp.send();
       }
       function doSomethingWithTheResponse(response, divId, isJSON) {
-  		  var launchURLValue = responseText;
+      	var responseText = (isJSON) ? JSON.parse(response) : response;
+        var launchURLValue = response;
       	loadJSON(launchURLValue);
       }
       function loadJSON(data_file){
