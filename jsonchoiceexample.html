@@ -84,6 +84,7 @@
               //Add what we just created to the div element
               document.body.appendChild(div);
               document.body.appendChild(document.getElementById('explanation'));
+              document.getElementById("explanation").className = "thisOne";
             }
           }
         }
@@ -153,7 +154,8 @@
             div.id = "details";
             div.innerHTML = newDivValues;
             document.body.appendChild(div);
-            document.body.appendChild(document.getElementById('explanation'));
+            document.body.appendChild(document.getElementById("explanation"));
+            document.getElementById("explanation").className = "thisOne";
           }
         }
         http_request.open("GET", data_file, true);
@@ -169,7 +171,16 @@
         document.getElementById("hideButton").style.display = 'block';
         document.getElementById("showButton").style.display = 'none';
         document.body.appendChild(document.getElementById('explanation'));
+        document.getElementById("explanation").className = "thisOne";
+        changeBGColor();
       }
+      function changeBGColor() {
+        var explClass = document.getElementsByClassName('thisOne');
+        for(i=0; i<explClass.length; i++) {
+          explClass[i].style.color = 'blue';
+        }
+      }
+
     </script>
     <title>JSON Demonstration</title>
   </head>
