@@ -172,12 +172,12 @@
         document.getElementById("showButton").style.display = 'none';
         document.body.appendChild(document.getElementById('explanation'));
         document.getElementById("explanation").className = "thisOne";
-        changeBGColor();
+        changeFontColor();
       }
-      function changeBGColor() {
-        var explClass = document.getElementsByClassName('thisOne');
-        for(i=0; i<explClass.length; i++) {
-          explClass[i].style.color = 'blue';
+      function changeFontColor() {
+        var classToChange = document.getElementsByClassName('thisOne');
+        for(i=0; i<classToChange.length; i++) {
+          classToChange[i].style.color = 'blue';
         }
       }
 
