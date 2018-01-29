@@ -83,6 +83,7 @@
               div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' <button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">See Details </button> <br><br>';
               //Add what we just created to the div element
               document.body.appendChild(div);
+              document.body.appendChild(document.getElementById('explanation'));
             }
           }
         }
@@ -152,8 +153,6 @@
             div.id = "details";
             div.innerHTML = newDivValues;
             document.body.appendChild(div);
-            var expl = document.getElementById('explanation');
-            expl.parentNode.removeChild(expl);
             document.body.appendChild(document.getElementById('explanation'));
           }
         }
