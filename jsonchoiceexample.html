@@ -157,15 +157,32 @@
         http_request.open("GET", data_file, true);
         http_request.send();
       }
+      function hideExplanation() {
+        document.getElementById("explanation").style.display = 'none';
+        document.getElementById("hideButton").style.display = 'none';
+        document.getElementById("showButton").style.display = 'block';
+      }
+      function showExplanation() {
+        document.getElementById("explanation").style.display = 'block';
+        document.getElementById("hideButton").style.display = 'block';
+        document.getElementById("showButton").style.display = 'none';
+      }
     </script>
     <title>JSON Demonstration</title>
   </head>
-  <body>
+  <body onload="hideExplanation()">
     <h1>JSON retrieval</h1>
-    <p>This page retrieves information from https://launchlibrary.net as JSON file, then parses that file to provide various details. A demonstration of using stringify to display the raw JSON follows the detail sections.</p>
+    <p>This page retrieves information from https://launchlibrary.net . In order to view details regarding how this page displays knowledge of required CIT261 criteria,
+    click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
+    <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
+    <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
     <div id = "central">
-      <p>Click the "Update Details" button to display the next 5 launches.
+      <p>Click the "Update Details" button to display the next 5 upcoming launches.
       <button type = "button" onclick = "getFileFromServer( '/ajaxtextfile.txt', 'Textdiv', false )">Update Details </button>
+    </div>
+    <div id = "explanation">
+      <h3>CIT261 Explanation</h3>
+      <p>This is the text I want to hide and then display</p>
     </div>
 </body>
 </html>
