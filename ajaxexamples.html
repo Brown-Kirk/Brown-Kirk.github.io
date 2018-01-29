@@ -12,7 +12,7 @@
           var textvalue = this.responseText;
         }
       }
-      ajaxtxtvalue.open("GET","ajaxtextfile.txt",true);
+      ajaxtxtvalue.open("GET","./ajaxtextfile.txt",true);
       ajaxtxtvalue.send();
       document.getElementById('outputdiv').innerHTML = textvalue;
     }
