@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+	<title>JavaScript Examples</title>
+
+	<script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script type="text/javascript">
+    function getFileValue(){
+      ajaxtxtvalue.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          var textvalue = this.responseText;
+        }
+      }
+      ajaxtxtvalue.open("GET","ajaxtextfile.txt",true);
+      ajaxtxtvalue.send();
+      document.getElementById('outputdiv').innerHTML = textvalue;
+    }
+  </script>
+  <title>AJAX Demonstration</title>
+</head>
+<body>
+  <h1>JSON retrieval</h1>
+  <p>This page retrieves information from https://launchlibrary.net as JSON file, then parses that file to provide various details. A demonstration of using stringify to display the raw JSON follows the detail sections.</p>
+  <div id = "central">
+    <p>Click the "Update Details" button to display the next 5 launches.
+    <button type = "button" onclick = "getFileValue()">Update Details </button>
+  </div>
+  <p><div id="outputdiv"></div></p>
+</body>
+</html>
