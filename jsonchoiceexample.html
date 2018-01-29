@@ -2,26 +2,34 @@
   <head>
     <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
     <script type = "application/javascript">
-      /*The AJAX code is heavily borrowed from gtjames.github.io . The general structure is his, what I do with it is mine.
+      /*The AJAX code is adapted from gtjames.github.io . The general structure is his, what I do with it is mine.
       I wanted an example of retrieving a plain text file, but wanted it to do something. So, I put the URL of where I
       want to pull my JSON file from in a txt file, and dropped that on my server. Using the getFileFromServer function,
       I retrieve that file and insert the value (the URL in the file) into the loadJSON function as the source for the data_file
       variable.
       */
       function getFileFromServer(url, divId, isJSON){
-      	var xmlhttp = new XMLHttpRequest();
-      	xmlhttp.onreadystatechange =
-      			function()
-      			{	//	This code is not executed immedidaitely. It is call later when the server starts to respond.
-      				if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-      					var launchURLValue = (isJSON) ? JSON.parse(response) : xmlhttp.responseText;
-                loadJSON(launchURLValue);
-      			}
-      	xmlhttp.open("GET", url, true);
-      	xmlhttp.send();
+        //setting a new instance of XMLHttpRequest
+      	var ajaxtextvalue = new XMLHttpRequest();
+        //Begin monitoring for a response from the server
+        ajaxtextvalue.onreadystatechange = function() {
+          //When a the server is ready and sends a response
+  				if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
+            //Take that response and assign it to the launchURLValue variable
+  					var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
+            //Call the loadJSON function using that variable
+            loadJSON(launchURLValue);
+  			}
+        //Send the get request
+      	ajaxtextvalue.open("GET", url, true);
+      	ajaxtextvalue.send();
       }
+      /*This function retrieves a JSON file from an independent website and displays a list of the next five spacecraft launches
+      across the world. It also gives a button by each one that, when selected, will display more details for that launch.
+      */
+      //Run the loadJSON function with data_file as the sole parameter
       function loadJSON(data_file){
-        //var data_file = "https://launchlibrary.net/1.3/launch/next/5";
+        //Here we are opening up another AJAX request. This one, however, should take browser better into account.
         var http_request = new XMLHttpRequest();
         try{
           http_request = new XMLHttpRequest();
@@ -40,27 +48,40 @@
             }
           }
         }
-
+        //Again, watching for the ready state to change so we can receive the JSON file
         http_request.onreadystatechange = function(){
           if (http_request.readyState == 4  ){
+            //Parse the JSON file and assign the new object to the jsonObj variable
             var jsonObj = JSON.parse(http_request.responseText);
-            //document.getElementById( "central" ).innerHTML = "";
+            //Since we know this JSON is a list of 5 items, go through each one and assign variables based on the values
             for(var i in jsonObj.launches) {
+              //Save the number of items in this list as a variable. This is used later to help us remove unused div's
               sessionStorage.setItem("launchcount",i);
+              //Get the launch number from the JSON file
               var launchnumber = jsonObj.launches[i].id;
+              //Assign an elementID variable that we can use to create a new div
               var launchelementID = "launchchoice" + i;
+              //Create a new Div
               var launchElementDivs = document.getElementById(launchelementID);
+              //If the div already exists, clear it so we can start from scratch
               if (launchElementDivs != null) {
                 launchElementDivs.parentNode.removeChild(launchDetailDiv);
               }
+              //Create a new Div
               var detailsDiv = document.getElementById('details');
+              //If the div already exists, clear it so we can start from scratch
               if (detailsDiv != null) {
                 detailsDiv.parentNode.removeChild(detailsDiv);
               }
+              //Create the new URL to retrieve detailed information about the selected launch
               var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
+              //Create a new Div
               var div = document.createElement('div');
+              //Assign an ID to the div
               div.id = launchelementID;
+              //Create the content to be displayed in the new div
               div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' <button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">See Details </button> <br><br>';
+              //Add what we just created to the div element
               document.body.appendChild(div);
             }
           }
@@ -68,12 +89,12 @@
         http_request.open("GET", data_file, true);
         http_request.send();
       }
-
+      //This function takes the values from the selected launch and pulls back detailed information about that launch
+      //Not commenting for several lines. See similar function above
       function loadSecondJSON(launchurl){
         var data_file = launchurl;
         var http_request = new XMLHttpRequest();
         try{
-          // Opera 8.0+, Firefox, Chrome, Safari
           http_request = new XMLHttpRequest();
         }
         catch (e){
@@ -92,10 +113,12 @@
         }
         http_request.onreadystatechange = function(){
           if (http_request.readyState == 4  ){
+            //Now we're parsing the new JSON
             var jsonObj2 = JSON.parse(http_request.responseText);
-            //var elem = document.getElementById("central");
-            //elem.parentNode.removeChild(elem);
+            //Remember that launch count that we saved? Here's where we retrieve it
             var launchcount = sessionStorage.getItem("launchcount");
+            //Now we are going to use a do...while loop to remove all those prior elements so we don't have those
+            //buttons just sitting around.
             do {
               var launchelementID = "launchchoice" + launchcount;
               var elem = document.getElementById(launchelementID);
@@ -103,15 +126,19 @@
               launchcount--;
             }
             while (launchcount >= 0);
+            //Here we're pulling individual values from the JSON
             var launchstart = jsonObj2.launches[0].windowstart;
             var launchend = jsonObj2.launches[0].windowend;
+            //Combining these two into one statement, just to make it easier to post into the page later
             var launchwindowfull = launchstart + " - " + launchend;
             var launchsite = jsonObj2.launches[0].location.pads[0].name;
             var rocketname = jsonObj2.launches[0].rocket.name;
             var rocketagency = jsonObj2.launches[0].rocket.agencies[0].name;
             var mission = jsonObj2.launches[0].missions[0].name;
             var missiondetails = jsonObj2.launches[0].missions[0].description;
+            //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
             var rawJSON = JSON.stringify(jsonObj2);
+            //Creating each paragraph
             var launchWindowDetail = '<h3>Launch Window</h3><p>' + launchwindowfull + '</p>';
             var launchSiteDetail = '<h3>Launch Site</h3><p>' + launchsite + '</p>';
             var rocketNameDetail = '<h3>Rocket Name</h3><p>' + rocketname + '</p>';
@@ -119,6 +146,7 @@
             var missionNameDetails = '<h3>Mission Name</h3><p>' + mission + '</p>';
             var missionDescDetails = '<h3>Mission Details</h3><p>' + missiondetails + '</p>';
             var rawJSONvalue = '<h3>Raw JSON Values</h3><p>' + rawJSON + '</p>';
+            //Combining all those paragraphs into one div
             var newDivValues = launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + missionNameDetails + missionDescDetails + rawJSONvalue;
             var div = document.createElement('div');
             div.id = "details";
