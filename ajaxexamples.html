@@ -6,41 +6,6 @@
 	<title>JavaScript Examples</title>
 
 	<script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script type="text/javascript">
-
-  function getFileFromServer(url, divId, isJSON)
-  {
-  	var xmlhttp = new XMLHttpRequest();
-  	xmlhttp.onreadystatechange =
-  			function()
-  			{	//	This code is not executed immedidaitely. It is call later when the server starts to respond.
-  				if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-  					doSomethingWithTheResponse(xmlhttp.responseText, divId, isJSON);
-  			}
-  	xmlhttp.open("GET", url, true);
-  	xmlhttp.send();
-  }
-  function doSomethingWithTheResponse(response, divId, isJSON)
-  {
-  	var responseText = (isJSON) ? JSON.parse(response) : response;
-  	if (isJSON) {
-  		document.getElementById( divId+"2" ).innerHTML = "Just the text<BR>" + response;
-  		document.getElementById( divId ).innerHTML = "Fields from the JSON Object<BR>" +
-  			"User Name: " + responseText.user.name + "<BR>" +
-  			"JSON is just Key:value pairs - " + responseText.thisIsTheKey + "<BR>";
-  		document.getElementById( divId ).style.color = responseText.color;
-  	}
-  	else {
-  		document.getElementById( divId ).innerHTML = responseText;
-  	}
-  }
-
-
-
-
-
-
-
-
     function getFileValue(){
       ajaxtxtvalue.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
