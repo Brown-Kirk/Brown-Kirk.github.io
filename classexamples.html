@@ -4,16 +4,33 @@
 
 <h1 id="id1" class="thisClass">My Heading 1</h1>
 
-<button type="button" onclick="document.getElementById('id1').style.color = 'red'">Red</button>
-<button type="button" onclick="document.getElementsByTagName('h1')[0].style.color = 'blue', document.getElementsByTagName('h1')[0].style.border = 'thick solid #0000FF'">Blue & Border</button>
-<button type="button" onclick="document.getElementsByClassName('thisClass')[0].style.color = 'yellow', document.getElementsByClassName('thisClass')[0].style.textAlign = 'right'">Yellow & Align Right</button>
-<button type="button" onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Arial', document.getElementsByTagName('h1')[0].style.color = 'blue'">Blue & Arial</button>
+<button type="button"
+	onclick="document.getElementById('id1').style.color = 'red'"
+    >Red</button>
 
+<button type="button"
+	onclick="document.getElementsByTagName('h1')[0].style.color = 'blue',
+    document.getElementsByTagName('h1')[0].style.border = 'thick solid #0000FF'"
+    >Blue & Border</button>
 
+<button type="button"
+	onclick="document.getElementsByClassName('thisClass')[0].style.color = 'yellow',
+    document.getElementsByClassName('thisClass')[0].style.textAlign = 'right'"
+    >Yellow & Align Right</button>
+
+<button type="button"
+	onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Arial',
+    document.getElementsByTagName('h1')[0].style.color = 'orange',
+    document.body.style.backgroundImage='http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png'"
+    >Orange & Arial</button>
+
+<br>
 <button type="button" onclick="backgroundColor()">Set background color</button>
+<button type="button" onclick="backgroundImage()">Set background image</button>
 
 <script>
 function backgroundColor() {document.body.style.backgroundColor = "green";}
+function backgroundImage() {document.body.style.backgroundImage = "url('http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png')";}
 </script>
 
 </body>
