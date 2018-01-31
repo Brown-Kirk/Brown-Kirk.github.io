@@ -199,7 +199,7 @@
       <h3>AJAX</h3>
       <p>The primary function of this page is to retrieve a JSON file from an external site, in this case, launchlibrary.net. It does this using the AJAX request shown
         below. This function takes the URL or location of the file as a parameter. </p>
-      <code>function loadJSON(data_file){
+      <pre><code>function loadJSON(data_file){
               var http_request = new XMLHttpRequest();
               try{
                 http_request = new XMLHttpRequest();
@@ -242,7 +242,7 @@
                     document.getElementById("explanation").className = "thisOne";
                   }
                 }
-              }</code>
+              }</code></pre>
       <h3>JSON</h3>
       <p>Once we have received the JSON through the above code, we parse it using the JSON.parse function. From here, we toss it into a for each, processing each of the five primary objects contained in the JSON.
         Later on, we use the stringify option to get it back into JSON format so that we can display to the user the raw JSON data.</p>
