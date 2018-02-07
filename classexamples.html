@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html>
-<body>
+	<body>
 
-<h1 id="id1" class="thisClass">My Heading 1</h1>
+	<h1 id="id1" class="thisClass">My Heading 1</h1>
 
-<button type="button"
-	onclick="document.getElementById('id1').style.color = 'red'"
-    >Red</button>
+	<button type="button"
+		onclick="document.getElementById('id1').style.color = 'red'"
+	    >Red</button>
 
-<button type="button"
-	onclick="document.getElementsByTagName('h1')[0].style.color = 'blue',
-    document.getElementsByTagName('h1')[0].style.border = 'thick solid #0000FF'"
-    >Blue & Border</button>
+	<button type="button"
+		onclick="document.getElementsByTagName('h1')[0].style.color = 'blue',
+	    document.getElementsByTagName('h1')[0].style.border = 'thick solid #0000FF'"
+	    >Blue & Border</button>
 
-<button type="button"
-	onclick="document.getElementsByClassName('thisClass')[0].style.color = 'yellow',
-    document.getElementsByClassName('thisClass')[0].style.textAlign = 'right'"
-    >Yellow & Align Right</button>
+	<button type="button"
+		onclick="document.getElementsByClassName('thisClass')[0].style.color = 'yellow',
+	    document.getElementsByClassName('thisClass')[0].style.textAlign = 'right'"
+	    >Yellow & Align Right</button>
 
-<button type="button"
-	onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Arial',
-    document.getElementsByTagName('h1')[0].style.color = 'orange',
-    document.body.style.backgroundImage='http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png'"
-    >Orange & Arial</button>
+	<button type="button"
+		onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Arial',
+	    document.getElementsByTagName('h1')[0].style.color = 'orange',
+	    document.body.style.backgroundImage='http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png'"
+	    >Orange & Arial</button>
 
-<br>
-<button type="button" onclick="backgroundColor()">Set background color</button>
-<button type="button" onclick="backgroundImage()">Set background image</button>
+	<br>
+	<button type="button"
+		onclick="backgroundColor()"
+		>Set background color</button>
+	<button type="button"
+		onclick="backgroundImage()"
+		>Set background image</button>
+	<br><br>
+	<button type"button"
+		id="movingButton"
+		onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Serif',
+			document.getElementsByTagName('h1')[0].style.color = 'black',
+			document.body.style.backgroundImage='',
+			document.getElementsByClassName('thisClass')[0].style.textAlign = 'Left',
+			document.getElementsByTagName('h1')[0].style.border = '',
+			document.getElementById('id1').style.color = 'black',
+			document.body.style.backgroundColor = ''"
+			>Reset</button>
+	<br><br><br>
+	<button type"button"
+		id="movingButton"
+		onmouseover='moveObj(this)'
+			>What do I do?</button>
 
-<script>
-function backgroundColor() {document.body.style.backgroundColor = "green";}
-function backgroundImage() {document.body.style.backgroundImage = "url('http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png')";}
-</script>
+		<script>
+			function backgroundColor() {
+				document.body.style.backgroundColor = "green";
+			}
+			function backgroundImage() {
+				document.body.style.backgroundImage = "url('http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png')";
+			}
+			function moveObj(obj){
+			var w = 600, h = 400; // width and height
+				newWidth = Math.floor(Math.random()*w);
+				newHeight = Math.floor(Math.random()*h);
+				obj.style.position="absolute";
+				obj.style.left=newWidth+"px";
+				obj.style.top=newHeight+"px";
+			}
+			function checkObj(event,obj){
+				var top = obj.style.top.split("px")[0];
+				var left = obj.style.left.split("px")[0];
+				if(top+5 > event.y || left+5 > event.x){
+					moveObj(obj);
+				}
+			}
 
-</body>
+		</script>
+
+	</body>
 </html>
