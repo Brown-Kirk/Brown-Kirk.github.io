@@ -33,7 +33,6 @@
 		>Set background image</button>
 	<br><br>
 	<button type"button"
-		id="movingButton"
 		onclick="document.getElementsByTagName('h1')[0].style.fontFamily = 'Serif',
 			document.getElementsByTagName('h1')[0].style.color = 'black',
 			document.body.style.backgroundImage='',
@@ -46,7 +45,22 @@
 	<button type"button"
 		id="movingButton"
 		onmouseover='moveObj(this)'
+		ontouch='moveObj(this)'
 			>What do I do?</button>
+	<br><br><br><br><br><br><br><br><br><br>
+	<h3>Explanations</h3>
+	<p>This page focuses on manipulating CSS class properties with JavaScript and
+		standard JavaScript events. various classes are altered using several different
+		class types. The following are utilized: getElementsByTagName, getElementById,
+		and getElementsByClassName. Within these, I alter the font colors, font family,
+		alignment, border, and the background color and image.</p>
+	<p>In order to make each of these events happen, I utilize the standard JavaScript
+		events of onclick, on onmouseover, and ontouch. I could go through and add more
+		events, but thought there were enough gimicks on the page already, and they each
+		work in very similar ways.</p>
+	<p>The code is my own with the exception of the functions to move the button. This
+		was borrowed from a forum post on <a href="http://www.webdeveloper.com/forum/showthread.php?18460-Move-a-button-on-the-onMouseOver-event">webdeveloper.com</a></p>
+
 
 		<script>
 			function backgroundColor() {
@@ -55,13 +69,13 @@
 			function backgroundImage() {
 				document.body.style.backgroundImage = "url('http://www.byui.edu/Images/Branding/Logos/BYU-Idaho.png')";
 			}
-			function moveObj(obj){
-			var w = 600, h = 400; // width and height
+			function moveObj(button){
+			var w = 600, h = 400;
 				newWidth = Math.floor(Math.random()*w);
 				newHeight = Math.floor(Math.random()*h);
-				obj.style.position="absolute";
-				obj.style.left=newWidth+"px";
-				obj.style.top=newHeight+"px";
+				button.style.position="absolute";
+				button.style.left=newWidth+"px";
+				button.style.top=newHeight+"px";
 			}
 			function checkObj(event,obj){
 				var top = obj.style.top.split("px")[0];
