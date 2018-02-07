@@ -1,6 +1,5 @@
 Next steps:
-Save JSON file using sessionStorage
 Find other ways/needs to save objects, arrays, associative arrays, etc.
-Work on manipulating CSS class properties
 Prepare lesson on CSS manipulation for Wednesday
+JavaScript events - need more examples than onClick and onLoad
 Jump forward to HTML 5 tags to prep for week 6 teaching

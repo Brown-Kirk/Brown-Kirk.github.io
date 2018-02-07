@@ -175,6 +175,10 @@
         changeFontColor();
       }
       function changeFontColor() {
+        var tagToChange = document.getElementsByTagName('h3');
+        for(i=0; i<tagToChange.length; i++) {
+          tagToChange[i].style.color = 'red';
+        }
         var classToChange = document.getElementsByClassName('thisOne');
         for(i=0; i<classToChange.length; i++) {
           classToChange[i].style.color = 'blue';
@@ -252,7 +256,7 @@
         sessionStorage command, in order to remove the DIV’s for each launch and then display the details for just the chosen item. I’d be happy to show how to save and retrieve other types of objects, but they
         would all be very similar to this. I did choose to only save using sessionStorage, and not using localStorage, so that the data would be specific to this browser session.</p>
       <h3>DOM</h3>
-      <p>This is used quite a bit throughout the entire script. I use document.getElementById quite a bit to identify specific DIV’s, sometimes following that up with <div name>.parentNode.removeChild to remove
+      <p>This is used quite a bit throughout the entire script. I use document.getElementById quite a bit to identify specific DIV’s, sometimes following that up with xxxx.parentNode.removeChild to remove
         an existing DIV. I utilize document.createElement to create new DIV’s, innerHTML to create content within the DIV, document.body.appendChild to place the DIV. There are other examples throughout the
         script. I also use the “appendChild” at times in order to get my explanation to always be at the bottom of the page. </p>
       <h3>CSS Class Manipulation</h3>
