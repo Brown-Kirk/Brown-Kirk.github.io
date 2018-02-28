@@ -138,6 +138,8 @@
             var rocketagency = jsonObj2.launches[0].rocket.agencies[0].name;
             var mission = jsonObj2.launches[0].missions[0].name;
             var missiondetails = jsonObj2.launches[0].missions[0].description;
+            var rocketImage = jsonObj2.launches[0].rocket.imageURL;
+            var launchVideo = jsonObj2.launches[0].vidURLs[0];
             //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
             var rawJSON = JSON.stringify(jsonObj2);
             //Creating each paragraph
