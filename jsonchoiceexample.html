@@ -152,7 +152,7 @@
             var rawJSONvalue = '<h3>Raw JSON Values</h3><p>' + rawJSON + '</p>';
             var rocketImageCanvas = '<canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
             //Combining all those paragraphs into one div
-            var newDivValues = launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + missionNameDetails + missionDescDetails + rawJSONvalue + rocketImageCanvas;
+            var newDivValues = launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
             var div = document.createElement('div');
             div.id = "details";
             div.innerHTML = newDivValues;
