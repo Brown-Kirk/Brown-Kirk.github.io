@@ -150,14 +150,24 @@
             var missionNameDetails = '<h3>Mission Name</h3><p>' + mission + '</p>';
             var missionDescDetails = '<h3>Mission Details</h3><p>' + missiondetails + '</p>';
             var rawJSONvalue = '<h3>Raw JSON Values</h3><p>' + rawJSON + '</p>';
+            var rocketImageCanvas = '<canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
             //Combining all those paragraphs into one div
-            var newDivValues = launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + missionNameDetails + missionDescDetails + rawJSONvalue;
+            var newDivValues = launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + missionNameDetails + missionDescDetails + rawJSONvalue + rocketImageCanvas;
             var div = document.createElement('div');
             div.id = "details";
             div.innerHTML = newDivValues;
             document.body.appendChild(div);
             document.body.appendChild(document.getElementById("explanation"));
             document.getElementById("explanation").className = "thisOne";
+              var c = document.getElementById("myCanvas");
+              var ctx = c.getContext("2d");
+              var imageObj = new Image();
+              width = 250;
+              height = 300;
+              imageObj.onload = function() {
+              ctx.drawImage(imageObj,0,0,width,height);
+              };
+              imageObj.src = "https://s3.amazonaws.com/launchlibrary/RocketImages/Falcon+9+Full+Thrust_1920.jpg";
           }
         }
         http_request.open("GET", data_file, true);
