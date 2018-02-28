@@ -1,9 +1,6 @@
 <html>
 <body>
 
-
-<img id="scream" src="https://s3.amazonaws.com/launchlibrary/RocketImages/Falcon+9+Full+Thrust_1920.jpg" alt="The Scream" width="220" height="277">
-
 <p>Canvas to fill:</p>
 <canvas id="myCanvas" width="250" height="300"
 style="border:1px solid #d3d3d3;">
@@ -16,8 +13,8 @@ function drawCanvas() {
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   var imageObj = new Image();
-  width = 220;
-  height = 277;
+  width = 230;
+  height = 280;
   imageObj.onload = function() {
   ctx.drawImage(imageObj,10,10,width,height);
   };
