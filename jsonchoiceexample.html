@@ -172,7 +172,7 @@
               var jsonObj = JSON.parse(http_request.responseText);
               var launchnumber = localStorage.getItem("launchNumberSaved");
               //Assign an elementID variable that we can use to create a new div
-              var launchelementID = "launchchoice1" ;
+              var launchelementID = "launchchoicea" ;
               var launchElementDivs = document.getElementById(launchelementID);
               //If the div already exists, clear it so we can start from scratch
               if (launchElementDivs != null) {
@@ -201,7 +201,7 @@
                 //Get the launch number from the JSON file
                 var launchnumber = jsonObj.launches[i].id;
                 //Assign an elementID variable that we can use to create a new div
-                var launchelementID = "launchchoice" + (i + 1);
+                var launchelementID = "launchchoice" + (i);
                 //Create a new Div
                 var launchElementDivs = document.getElementById(launchelementID);
                 //If the div already exists, clear it so we can start from scratch
