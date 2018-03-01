@@ -261,7 +261,7 @@
               //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
-              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br><br>'
+              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br>'
               var launchWindowDetail = '<h3>Launch Window</h3><p>' + launchwindowfull + '</p>';
               var launchSiteDetail = '<h3>Launch Site</h3><p>' + launchsite + '</p>';
               var rocketNameDetail = '<h3>Rocket Name</h3><p>' + rocketname + '</p>';
@@ -294,11 +294,13 @@
           http_request.send();
         }
         function hideExplanation() {
+          document.getElementById("explainInstructions").style.display = 'block';
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
         }
         function showExplanation() {
+          document.getElementById("explainInstructions").style.display = 'block';
           document.getElementById("explanation").style.display = 'block';
           document.getElementById("hideButton").style.display = 'block';
           document.getElementById("showButton").style.display = 'none';
@@ -321,14 +323,15 @@
       <title>JSON Demonstration</title>
     </head>
     <body onload="hideExplanation()">
-      <h1>JSON retrieval - updated</h1>
-      <p>This page retrieves information from https://launchlibrary.net . In order to view details regarding how this page displays knowledge of required CIT261 criteria,
-      click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
-      <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
-      <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
+      <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
         <p>Click the "Update Details" button to display the next 5 upcoming launches.
         <button type = "button" onclick = "getFileFromServer( '/ajaxtextfile.txt', 'Textdiv', false )">Update Details </button></P
+      </div>
+      <div id = "explainInstructions"><p>This page retrieves information from https://launchlibrary.net . In order to view details regarding how this page displays knowledge of required CIT261 criteria,
+      click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
+      <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
+      <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
       </div>
       <div id = "explanation">
         <h3>CIT261 Explanation</h3>
