@@ -144,7 +144,7 @@
             //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
             var rawJSON = JSON.stringify(jsonObj2);
             //Creating each paragraph
-            var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ' ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '.'
+            var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ' ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails
             var launchWindowDetail = '<h3>Launch Window</h3><p>' + launchwindowfull + '</p>';
             var launchSiteDetail = '<h3>Launch Site</h3><p>' + launchsite + '</p>';
             var rocketNameDetail = '<h3>Rocket Name</h3><p>' + rocketname + '</p>';
@@ -154,7 +154,8 @@
             var rawJSONvalue = '<h3>Raw JSON Values</h3><p>' + rawJSON + '</p>';
             var rocketImageCanvas = '<canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
             //Combining all those paragraphs into one div
-            var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
+            //var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
+            var newDivValues = launchinfo + rawJSONvalue;
             var div = document.createElement('div');
             div.id = "details";
             div.innerHTML = newDivValues;
