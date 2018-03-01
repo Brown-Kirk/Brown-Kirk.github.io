@@ -294,7 +294,6 @@
           http_request.send();
         }
         function hideExplanation() {
-          document.getElementById("explainInstructions").style.display = 'block';
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
@@ -304,6 +303,7 @@
           document.getElementById("explanation").style.display = 'block';
           document.getElementById("hideButton").style.display = 'block';
           document.getElementById("showButton").style.display = 'none';
+          document.body.appendChild(document.getElementById('explainInstructions'));
           document.body.appendChild(document.getElementById('explanation'));
           document.getElementById("explanation").className = "thisOne";
           changeFontColor();
