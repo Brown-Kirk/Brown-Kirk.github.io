@@ -167,6 +167,7 @@
           }
           //Again, watching for the ready state to change so we can receive the JSON file
           http_request.onreadystatechange = function(){
+
             if (http_request.readyState == 4  ){
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
@@ -176,7 +177,7 @@
               var launchElementDivs = document.getElementById(launchelementID);
               //If the div already exists, clear it so we can start from scratch
               if (launchElementDivs != null) {
-                launchElementDivs.parentNode.removeChild(launchDetailDiv);
+                launchElementDivs.parentNode.removeChild(launchElementDivs);
               }
               //Create a new Div
               var detailsDiv = document.getElementById('details');
@@ -224,10 +225,10 @@
                 div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' <button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">See Details </button> <br><br>';
                 //Add what we just created to the div element
                 document.body.appendChild(div);
-                document.body.appendChild(document.getElementById('explainInstructions'));
-                document.body.appendChild(document.getElementById('explanation'));
-                document.getElementById("explanation").className = "thisOne";
               }
+            document.body.appendChild(document.getElementById('explainInstructions'));
+            document.body.appendChild(document.getElementById('explanation'));
+            document.getElementById("explanation").className = "thisOne";
             }
           }
           http_request.open("GET", data_file, true);
