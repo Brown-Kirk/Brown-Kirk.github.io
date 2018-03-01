@@ -171,13 +171,21 @@
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               //Since we know this JSON is a list of 5 items, go through each one and assign variables based on the values
+              var launchnumber = localStorage.getItem("launchNumberSaved");
+              //Assign an elementID variable that we can use to create a new div
+              var launchelementID = "launchchoice1" ;
+              //Create a new Div
+              var launchElementDivs = document.getElementById(launchelementID);
+              //If the div already exists, clear it so we can start from scratch
+              if (launchElementDivs != null) {
+                launchElementDivs.parentNode.removeChild(launchDetailDiv);
               for(var i in jsonObj.launches) {
                 //Save the number of items in this list as a variable. This is used later to help us remove unused div's
                 sessionStorage.setItem("launchcount",i);
                 //Get the launch number from the JSON file
                 var launchnumber = jsonObj.launches[i].id;
                 //Assign an elementID variable that we can use to create a new div
-                var launchelementID = "launchchoice" + i;
+                var launchelementID = "launchchoice" + (i + 1);
                 //Create a new Div
                 var launchElementDivs = document.getElementById(launchelementID);
                 //If the div already exists, clear it so we can start from scratch
@@ -250,6 +258,8 @@
               var launchstart = jsonObj2.launches[0].windowstart;
               var launchend = jsonObj2.launches[0].windowend;
               var launchdate = jsonObj2.launches[0].net;
+              var launchNumberToSave = jsonObj2.launches[0].id;
+              localStorage.setItem("launchNumberSaved", launchNumberToSave );
               //Combining these two into one statement, just to make it easier to post into the page later
               var launchwindowfull = launchstart + " - " + launchend;
               var launchsite = jsonObj2.launches[0].location.pads[0].name;
@@ -321,7 +331,7 @@
         }
 
       </script>
-      <title>JSON Demonstration</title>
+      <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="hideExplanation()">
       <h1>Space Launch Information Retrieval</h1>
