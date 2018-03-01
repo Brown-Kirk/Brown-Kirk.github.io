@@ -174,11 +174,10 @@
               var launchnumber = localStorage.getItem("launchNumberSaved");
               //Assign an elementID variable that we can use to create a new div
               var launchelementID = "launchchoicea" ;
-              launchElementDivs.parentNode.removeChild(launchDetailDiv);
               var launchElementDivs = document.getElementById(launchelementID);
               //If the div already exists, clear it so we can start from scratch
               if (launchElementDivs != null) {
-                launchElementDivs.parentNode.removeChild(launchElementDivs);
+                launchElementDivs.parentNode.removeChild(launchDetailDiv);
               }
               //Create a new Div
               var detailsDiv = document.getElementById('details');
