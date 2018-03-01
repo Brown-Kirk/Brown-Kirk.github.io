@@ -179,6 +179,8 @@
               if (detailsDiv != null) {
                 detailsDiv.parentNode.removeChild(detailsDiv);
               }
+              explainInstructions.parentNode.removeChild(explainInstructions);
+              explanation.parentNode.removeChild(explanation);
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               var launchnumber = localStorage.getItem("launchNumberSaved");
