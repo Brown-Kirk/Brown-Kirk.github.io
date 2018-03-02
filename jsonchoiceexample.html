@@ -220,7 +220,6 @@
                 if (launchElementDivs != null) {
                   launchElementDivs.parentNode.removeChild(launchDetailDiv);
                 }
-                document.getElementById("video").style.display = 'none';
                 //Create a new Div
                 var detailsDiv = document.getElementById('details');
                 //If the div already exists, clear it so we can start from scratch
@@ -341,8 +340,6 @@
         }
         function hideExplanation() {
           document.body.style.width = '800px';
-          var elem = document.getElementById("video");
-          elem.parentNode.removeChild(elem);
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
