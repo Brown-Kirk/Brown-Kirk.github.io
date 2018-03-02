@@ -374,17 +374,6 @@
           document.getElementById("showButton").style.display = 'none';
           document.body.appendChild(document.getElementById('explanation'));
           document.getElementById("explanation").className = "thisOne";
-          changeFontColor();
-        }
-        function changeFontColor() {
-          var tagToChange = document.getElementsByTagName('h3');
-          for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'red';
-          }
-          var classToChange = document.getElementsByClassName('thisOne');
-          for(i=0; i<classToChange.length; i++) {
-            classToChange[i].style.color = 'blue';
-          }
         }
         function hideVideo() {
           var div = document.getElementById('video');
