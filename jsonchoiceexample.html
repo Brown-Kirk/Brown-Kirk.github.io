@@ -247,7 +247,7 @@
                 //Assign an ID to the div
                 div.id = launchelementID;
                 //Create the content to be displayed in the new div
-                div.innerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button>' + jsonObj.launches[i].lsp.name + " launch number "
+                div.innerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + " launch number "
                   + launchnumber + " is scheduled for " + jsonObj.launches[i].net
                   + ' <br><br>';
                 //Add what we just created to the div element
@@ -367,15 +367,15 @@
           document.getElementById("explanation").className = "thisOne";
         }
         function hideVideo() {
-          var div = document.getElementById('video');
-          if (div != null) {
-            div.parentNode.removeChild('video');
+          var videoDiv = document.getElementById('videoDiv');
+          if (videoDiv != null) {
+            videoDiv.parentNode.removeChild('videoDiv');
           }
         }
         function showVideo() {
-          var newDivVideo = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br><p>I wanted to include a link to the live feed for launches, but it just didn&apos;t work - not all agencies have them, and the links provided don&apos;t go to the live feed, but to the user page instead. So here&apos;s a Casablaca video instead. Imagine it has a space launch. However, don&apos;t get caught up in it and forget to look over my other elements! <b>Click on the "Retrieve Image" button below!</b></p>'
+          var newDivVideo = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg" frameborder="0" allow="encrypted-media" allowfullscreen></iframe><br><br><p>I wanted to include a link to the live feed for launches, but it just didn&apos;t work - not all agencies have them, and the links provided don&apos;t go to the live feed, but to the user page instead. So here&apos;s a Casablaca video instead. Imagine it has a space launch. However, don&apos;t get caught up in it and forget to look over my other elements! <b>Click on the "Retrieve Image" button below!</b></p>'
           var div = document.createElement('div');
-          div.id = "video";
+          div.id = "videoDiv";
           div.innerHTML = newDivVideo;
           document.body.appendChild(div);
         }
