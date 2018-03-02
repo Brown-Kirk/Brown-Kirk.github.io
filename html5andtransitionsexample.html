@@ -116,15 +116,25 @@
     <canvas id="myCanvas" width="250" height="300">
       Your browser does not support the HTML5 canvas tag.
     </canvas>
+    <p>
+      <button id="getPicture" onclick="drawCanvas()">Retrieve Image</button>
+      <br><br>This button utilizes HTML5's Canvas to retrieve an image, resize
+      it, and place it in a defined location. It then utilizes the CSS :hover
+      property and @keyframes to create an animation meant to appear like the
+      spacecraft is launching. This animation and :hover property is also used
+      in my <a href=https://brown-kirk.github.io/jsonchoiceexample.html>
+      Space Launch Information Retrieval</a> page (hover over the image of the
+      rocket in the launch information).
+    </p>
+    <br>
+    <video width="320" height="240" autoplay>
+      <source src="https://www.youtube.com/c/spacex/live?html5=1" type="video/mp4">
+      <source src="https://www.youtube.com/c/spacex/live?html5=1" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
 
-      <p>
-        <button id="getPicture" onclick="drawCanvas()">Retrieve Image</button>
-        <br><br>This button utilizes HTML5's Canvas to retrieve an image, resize
-        it, and place it in a defined location. It then utilizes the CSS :hover
-        property and @keyframes to create an animation meant to appear like a the spacecraft is launching.
-        This animation and :hover property is also used in my <a href=https://brown-kirk.github.io/jsonchoiceexample.html>
-        Space Launch Information Retrieval</a> page (hover over the image of the rocket in the launch information).
-      </p>
+
+
     <script>
       function drawCanvas() {
         var c = document.getElementById("myCanvas");
