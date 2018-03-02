@@ -382,21 +382,21 @@
         function changeColors(text,background) {
           var tagToChange = document.getElementsByTagName('h3');
           for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'text';
+            tagToChange[i].style.color = text;
           }
           var tagToChange = document.getElementsByTagName('h2');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'text';
+              tagToChange[i].style.color = text;
             }
           var tagToChange = document.getElementsByTagName('h1');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'text';
+              tagToChange[i].style.color = text;
             }
           var tagToChange = document.getElementsByTagName('p');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'text';
+              tagToChange[i].style.color = text;
             }
-          document.body.style.backgroundColor = "background";
+          document.body.style.backgroundColor = background;
         }
         function removeDivs() {
           var detailsDiv = document.getElementById('details');
