@@ -232,7 +232,9 @@
                 //Assign an ID to the div
                 div.id = launchelementID;
                 //Create the content to be displayed in the new div
-                div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' <button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">See Details </button> <br><br>';
+                div.innerHTML = jsonObj.launches[i].lsp.name + " launch nubmer "
+                  + launchnumber + " take off on " + jsonObj.launches[i].net 
+                  + ' <button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">See Details </button> <br><br>';
                 //Add what we just created to the div element
                 document.body.appendChild(div);
               }
