@@ -320,7 +320,7 @@
               div.id = "details";
               div.innerHTML = newDivValues;
               document.body.appendChild(div);
-              document.body.appendChild(document.getElementById('video'));
+              showVideo():
               document.body.appendChild(document.getElementById('explainInstructions'));
               document.body.appendChild(document.getElementById("explanation"));
               document.getElementById("explanation").className = "thisOne";
@@ -363,6 +363,14 @@
             classToChange[i].style.color = 'blue';
           }
         }
+        function hideVideo() {
+          var div = document.getElementById('video');
+          elem.parentNode.removeChild(div);
+        }
+        function showVideo() {
+          var div = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br><p>I wanted to include a link to the live feed for launches, but it just didn&apost work - not all agencies have them, and the links provided don&apost go to the live feed, but to the user page instead. So here&aposs a Casablaca video instead. Imagine it has a space launch. However, don&apost get caught up in it and forget to look over my other elements! <b>Click on the "Retrieve Image" button below!</b></p>'
+          document.body.appendChild(document.getElementById('video'));
+        }
 
       </script>
       <title>Space Launch Information Retrieval</title>
@@ -377,15 +385,6 @@
       click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
       <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
       <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
-      </div>
-      <div id = "video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>    <br>
-        <br>
-        <p>I wanted to include a link to the live feed for launches, but it just didn't work - not all
-          agencies have them, and the links provided don't go to the live feed, but to the user page
-          instead. So here's a Casablaca video instead. Imagine it has a space launch. However, don't
-          get caught up in it and forget to look over my other elements! <b>Click on the "Retrieve Image"
-          button below!</b></p>
       </div>
       <div id = "explanation">
         <h3>CIT261 Explanation</h3>
