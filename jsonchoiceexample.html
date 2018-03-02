@@ -120,6 +120,7 @@
       <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
       <script>
         function initMap(latitude, longitude) {
+          var div = document.createElement('map');
           var maplocation = {lat: latitude, lng: longitude};
           var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
@@ -177,11 +178,6 @@
 
             if (http_request.readyState == 4  ){
               var detailsDiv = document.getElementById('details');
-              //If the div already exists, clear it so we can start from scratch
-              if (detailsDiv != null) {
-                detailsDiv.parentNode.removeChild(detailsDiv);
-              }
-              var detailsDiv = document.getElementById('map');
               //If the div already exists, clear it so we can start from scratch
               if (detailsDiv != null) {
                 detailsDiv.parentNode.removeChild(detailsDiv);
@@ -250,7 +246,6 @@
                 //Add what we just created to the div element
                 document.body.appendChild(div);
               }
-            var div = document.createElement('map');
             document.body.appendChild(document.getElementById('map'));
             document.body.appendChild(document.getElementById('explainInstructions'));
             document.body.appendChild(document.getElementById('explanation'));
