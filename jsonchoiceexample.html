@@ -170,6 +170,7 @@
           http_request.onreadystatechange = function(){
 
             if (http_request.readyState == 4  ){
+              hideVideo();
               var detailsDiv = document.getElementById('details');
               //If the div already exists, clear it so we can start from scratch
               if (detailsDiv != null) {
@@ -320,7 +321,7 @@
               div.id = "details";
               div.innerHTML = newDivValues;
               document.body.appendChild(div);
-              showVideo():
+              showVideo();
               document.body.appendChild(document.getElementById('explainInstructions'));
               document.body.appendChild(document.getElementById("explanation"));
               document.getElementById("explanation").className = "thisOne";
