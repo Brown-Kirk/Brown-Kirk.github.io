@@ -399,10 +399,44 @@
           div.innerHTML = newDivVideo;
           document.body.appendChild(div);
         }
+        function highContrast() {
+          var tagToChange = document.getElementsByTagName('h3');
+          for(i=0; i<tagToChange.length; i++) {
+            tagToChange[i].style.color = 'white';
+          var tagToChange = document.getElementsByTagName('h2');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'white';
+          var tagToChange = document.getElementsByTagName('h1');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'white';
+          var tagToChange = document.getElementsByTagName('p');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'white';
+          }
+          document.body.style.backgroundColor = "black";
+        }
+        function sepia() {
+          var tagToChange = document.getElementsByTagName('h3');
+          for(i=0; i<tagToChange.length; i++) {
+            tagToChange[i].style.color = 'ecdaa3';
+          var tagToChange = document.getElementsByTagName('h2');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'ecdaa3';
+          var tagToChange = document.getElementsByTagName('h1');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'ecdaa3';
+          var tagToChange = document.getElementsByTagName('p');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'ecdaa3';
+          }
+          document.body.style.backgroundColor = "black";
+        }
       </script>
       <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="hideExplanation()">
+      <button type = "button" onclick = "highContrast()">High Contrast </button>
+      <button type = "button" onclick = "sepia()">Sepia </button>
       <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
