@@ -316,7 +316,7 @@
               var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
               //Combining all those paragraphs into one div
               //var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
-              var newDivValues = launchinfo + rocketImageCanvas + rawJSONvalue;
+              var newDivValues = launchinfo + rocketImageCanvas; //+ rawJSONvalue;
               var div = document.createElement('div');
               div.id = "details";
               div.innerHTML = newDivValues;
