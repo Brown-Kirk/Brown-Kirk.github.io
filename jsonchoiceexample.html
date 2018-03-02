@@ -220,6 +220,7 @@
                 if (launchElementDivs != null) {
                   launchElementDivs.parentNode.removeChild(launchDetailDiv);
                 }
+                document.getElementById("video").style.display = 'none';
                 //Create a new Div
                 var detailsDiv = document.getElementById('details');
                 //If the div already exists, clear it so we can start from scratch
@@ -323,6 +324,7 @@
               document.body.appendChild(document.getElementById('explainInstructions'));
               document.body.appendChild(document.getElementById("explanation"));
               document.getElementById("explanation").className = "thisOne";
+              document.getElementById("video").style.display = 'block';
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
                 var imageObj = new Image();
@@ -339,6 +341,7 @@
         }
         function hideExplanation() {
           document.body.style.width = '800px';
+          document.getElementById("video").style.display = 'none';
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
@@ -376,6 +379,15 @@
       click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
       <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
       <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
+      </div>
+      <div id = "video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>    <br>
+        <br>
+        <p>I wanted to include a link to the live feed for launches, but it just didn't work - not all
+          agencies have them, and the links provided don't go to the live feed, but to the user page
+          instead. So here's a Casablaca video instead. Imagine it has a space launch. However, don't
+          get caught up in it and forget to look over my other elements! <b>Click on the "Retrieve Image"
+          button below!</b></p>
       </div>
       <div id = "explanation">
         <h3>CIT261 Explanation</h3>
