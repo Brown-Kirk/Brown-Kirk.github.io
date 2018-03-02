@@ -410,21 +410,40 @@
         function sepia() {
           var tagToChange = document.getElementsByTagName('h3');
           for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'ecdaa3';
+            tagToChange[i].style.color = 'black';
           }
           var tagToChange = document.getElementsByTagName('h2');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'ecdaa3';
+              tagToChange[i].style.color = 'black';
             }
           var tagToChange = document.getElementsByTagName('h1');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'ecdaa3';
+              tagToChange[i].style.color = 'black';
             }
           var tagToChange = document.getElementsByTagName('p');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'ecdaa3';
+              tagToChange[i].style.color = 'black';
             }
-          document.body.style.backgroundColor = "black";
+          document.body.style.backgroundColor = "ecdaa3";
+        }
+        function resetColors() {
+          var tagToChange = document.getElementsByTagName('h3');
+          for(i=0; i<tagToChange.length; i++) {
+            tagToChange[i].style.color = 'black';
+          }
+          var tagToChange = document.getElementsByTagName('h2');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'black';
+            }
+          var tagToChange = document.getElementsByTagName('h1');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'black';
+            }
+          var tagToChange = document.getElementsByTagName('p');
+            for(i=0; i<tagToChange.length; i++) {
+              tagToChange[i].style.color = 'black';
+            }
+          document.body.style.backgroundColor = "white";
         }
       </script>
       <title>Space Launch Information Retrieval</title>
