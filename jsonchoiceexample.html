@@ -193,16 +193,7 @@
 
             if (http_request.readyState == 4  ){
               hideVideo();
-              var detailsDiv = document.getElementById('details');
-              //If the div already exists, clear it so we can start from scratch
-              if (detailsDiv != null) {
-                detailsDiv.parentNode.removeChild(detailsDiv);
-              }
-              var detailsDiv = document.getElementById('launchchoicea');
-              //If the div already exists, clear it so we can start from scratch
-              if (detailsDiv != null) {
-                detailsDiv.parentNode.removeChild(detailsDiv);
-              }
+              removeDivs();
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               var launchnumber = localStorage.getItem("launchNumberSaved");
@@ -388,70 +379,44 @@
           div.innerHTML = newDivVideo;
           document.body.appendChild(div);
         }
-        function highContrast() {
+        function changeColors(text,background) {
           var tagToChange = document.getElementsByTagName('h3');
           for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'white';
+            tagToChange[i].style.color = 'text';
           }
           var tagToChange = document.getElementsByTagName('h2');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'white';
+              tagToChange[i].style.color = 'text';
             }
           var tagToChange = document.getElementsByTagName('h1');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'white';
+              tagToChange[i].style.color = 'text';
             }
           var tagToChange = document.getElementsByTagName('p');
             for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'white';
+              tagToChange[i].style.color = 'text';
             }
-          document.body.style.backgroundColor = "black";
+          document.body.style.backgroundColor = "background";
         }
-        function sepia() {
-          var tagToChange = document.getElementsByTagName('h3');
-          for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'black';
+        function removeDivs() {
+          var detailsDiv = document.getElementById('details');
+          //If the div already exists, clear it so we can start from scratch
+          if (detailsDiv != null) {
+            detailsDiv.parentNode.removeChild(detailsDiv);
           }
-          var tagToChange = document.getElementsByTagName('h2');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          var tagToChange = document.getElementsByTagName('h1');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          var tagToChange = document.getElementsByTagName('p');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          document.body.style.backgroundColor = "ecdaa3";
-        }
-        function resetColors() {
-          var tagToChange = document.getElementsByTagName('h3');
-          for(i=0; i<tagToChange.length; i++) {
-            tagToChange[i].style.color = 'black';
+          var detailsDiv = document.getElementById('launchchoicea');
+          //If the div already exists, clear it so we can start from scratch
+          if (detailsDiv != null) {
+            detailsDiv.parentNode.removeChild(detailsDiv);
           }
-          var tagToChange = document.getElementsByTagName('h2');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          var tagToChange = document.getElementsByTagName('h1');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          var tagToChange = document.getElementsByTagName('p');
-            for(i=0; i<tagToChange.length; i++) {
-              tagToChange[i].style.color = 'black';
-            }
-          document.body.style.backgroundColor = "white";
         }
       </script>
       <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="hideExplanation()">
-      <button type = "button" onclick = "highContrast()">High Contrast </button>
-      <button type = "button" onclick = "sepia()">Sepia </button>
-      <button type = "button" onclick = "resetColors()">Default </button>
+      <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
+      <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
+      <button type = "button" onclick = "changeColors('black','white')">Default </button>
       <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
