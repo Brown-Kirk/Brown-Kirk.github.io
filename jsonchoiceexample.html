@@ -321,10 +321,10 @@
               div.id = "details";
               div.innerHTML = newDivValues;
               document.body.appendChild(div);
+              document.body.appendChild(document.getElementById('video'));
               document.body.appendChild(document.getElementById('explainInstructions'));
               document.body.appendChild(document.getElementById("explanation"));
               document.getElementById("explanation").className = "thisOne";
-              document.getElementById("video").style.display = 'block';
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
                 var imageObj = new Image();
@@ -341,7 +341,8 @@
         }
         function hideExplanation() {
           document.body.style.width = '800px';
-          document.getElementById("video").style.display = 'none';
+          var elem = document.getElementById("video");
+          elem.parentNode.removeChild(elem);
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
