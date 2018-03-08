@@ -222,11 +222,11 @@
                   + ' <br><br>';
                 createDiv(divID, divInnerHTML);
               }
-              moveDivsToBottom();
             }
           }
           http_request.open("GET", data_file, true);
           http_request.send();
+          moveDivsToBottom();
         }
         //This function takes the values from the selected launch and pulls back detailed information about that launch
         //Not commenting for several lines. See similar function above
@@ -291,19 +291,20 @@
               createDiv(divID,divInnerHTML);
               showVideo();
               createCanvas();
-              moveDivsToBottom();
             }
           }
           http_request.open("GET", launchurl, true);
           http_request.send();
+          moveDivsToBottom();
         }
         function moveDivsToBottom() {
           removeDiv("explainInstructions");
           removeDiv("explanation");
           removeDiv("buttons");
-          createHideButtons();
           createExplanationInstructions();
+          createHideButtons();
           createExplanation();
+          hideExplanation();
         }
         function initialPageLoad() {
           moveDivsToBottom();
