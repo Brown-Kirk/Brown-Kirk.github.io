@@ -234,7 +234,6 @@
         //This function takes the values from the selected launch and pulls back detailed information about that launch
         //Not commenting for several lines. See similar function above
         function loadSecondJSON(launchurl){
-          var data_file = launchurl;
           var http_request = new XMLHttpRequest();
           try{
             http_request = new XMLHttpRequest();
@@ -306,7 +305,7 @@
                 imageObj.src = rocketImage;
             }
           }
-          http_request.open("GET", data_file, true);
+          http_request.open("GET", launchurl, true);
           http_request.send();
         }
         function hideExplanation() {
@@ -369,7 +368,7 @@
           var div = document.getElementById(divName);
           //If the div already exists, clear it so we can start from scratch
           if (div != null) {
-            detailsDiv.parentNode.removeChild(detailsDiv);
+            div.parentNode.removeChild(divName);
           }
         }
       </script>
