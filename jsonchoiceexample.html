@@ -217,16 +217,16 @@
                 //Create the new URL to retrieve detailed information about the selected launch
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
                 var divID = "launchchoice" + i;
-                var divInnerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + " launch number "
-                  + launchnumber + " is scheduled for " + jsonObj.launches[i].net
+                var divInnerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + ' launch number '
+                  + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net
                   + ' <br><br>';
                 createDiv(divID, divInnerHTML);
+                moveDivsToBottom();
               }
             }
           }
           http_request.open("GET", data_file, true);
           http_request.send();
-          moveDivsToBottom();
         }
         //This function takes the values from the selected launch and pulls back detailed information about that launch
         //Not commenting for several lines. See similar function above
@@ -257,6 +257,7 @@
               var launchcount = sessionStorage.getItem("launchcount");
               //Now we are going to use a do...while loop to remove all those prior elements so we don't have those
               //buttons just sitting around.
+              removeDiv("details");
               removeDiv("launchchoicea");
               removeDiv("explanation");
               removeDiv("explainInstructions");
@@ -285,12 +286,19 @@
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
               var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '</p>';
-              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
+              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>var c = document.getElementById("myCanvas");'
+                + 'var ctx = c.getContext("2d");'
+                + 'var imageObj = new Image();'
+                + 'width = 250;'
+                + 'height = 300;'
+                + 'imageObj.onload = function() {'
+                + 'ctx.drawImage(imageObj,0,0,width,height);';
+                + '};'
+                + 'imageObj.src = rocketImage;'
               var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
               createDiv(divID,divInnerHTML);
               showVideo();
-              createCanvas();
               moveDivsToBottom();
             }
           }
@@ -307,19 +315,12 @@
           hideExplanation();
         }
         function initialPageLoad() {
+          document.body.style.width = '800px';
           moveDivsToBottom();
           hideExplanation();
         }
         function createCanvas() {
-          var c = document.getElementById("myCanvas");
-          var ctx = c.getContext("2d");
-          var imageObj = new Image();
-          width = 250;
-          height = 300;
-          imageObj.onload = function() {
-            ctx.drawImage(imageObj,0,0,width,height);
-          };
-          imageObj.src = rocketImage;
+
         }
         function createExplanationInstructions() {
           var divID = "explainInstructions";
@@ -403,7 +404,6 @@
           createDiv(divID,divInnerHTML);
         }
         function hideExplanation() {
-          document.body.style.width = '800px';
           document.getElementById("explanation").style.display = 'none';
           document.getElementById("hideButton").style.display = 'none';
           document.getElementById("showButton").style.display = 'block';
@@ -413,7 +413,6 @@
           document.getElementById("explanation").style.display = 'block';
           document.getElementById("hideButton").style.display = 'block';
           document.getElementById("showButton").style.display = 'none';
-          document.body.appendChild(document.getElementById('explanation'));
           document.getElementById("explanation").className = "thisOne";
         }
         function hideVideo() {
