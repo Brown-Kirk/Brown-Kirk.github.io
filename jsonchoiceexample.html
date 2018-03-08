@@ -305,6 +305,10 @@
           createExplanationInstructions();
           createExplanation();
         }
+        function initialPageLoad() {
+          moveDivsToBottom();
+          hideExplanation();
+        }
         function createCanvas() {
           var c = document.getElementById("myCanvas");
           var ctx = c.getContext("2d");
@@ -469,7 +473,7 @@
       </script>
       <title>Space Launch Information Retrieval</title>
     </head>
-    <body onload="hideExplanation()">
+    <body onload="initialPageLoad()">
       <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
       <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
       <button type = "button" onclick = "changeColors('black','white')">Default </button>
