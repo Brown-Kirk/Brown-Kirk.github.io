@@ -171,9 +171,12 @@
           hideVideo();
           removeDiv("details");
           removeDiv("launchchoicea");
+          removeDiv("explanation");
+          removeDiv("hideButton");
+          removeDiv("explainInstructions");
           createWaiting();
-          sleep();
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
+          removeDiv("waiting")
         }
         function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
@@ -491,6 +494,7 @@
           div.className = "waiting";
           //Add what we just created to the div element
           document.body.appendChild(div);
+          sleep();
         }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
