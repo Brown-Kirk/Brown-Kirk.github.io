@@ -421,18 +421,7 @@
           document.body.style.backgroundColor = background;
         }
         function removeDiv(divName) {
-          var detailsDiv = document.getElementById('divName');
-          //If the div already exists, clear it so we can start from scratch
-          if (detailsDiv != null) {
-            detailsDiv.parentNode.removeChild(detailsDiv);
-          }
-
-          var detailsDiv = document.getElementById('details');
-          //If the div already exists, clear it so we can start from scratch
-          if (detailsDiv != null) {
-            detailsDiv.parentNode.removeChild(detailsDiv);
-          }
-          var detailsDiv = document.getElementById('launchchoicea');
+          var detailsDiv = document.getElementById(divName);
           //If the div already exists, clear it so we can start from scratch
           if (detailsDiv != null) {
             detailsDiv.parentNode.removeChild(detailsDiv);
