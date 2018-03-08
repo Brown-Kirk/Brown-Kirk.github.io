@@ -174,7 +174,7 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          createWaiting(function() {sleep()});
+          createWaiting(function() {sleep(function(){removeDiv("waiting")})};
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false)
         }
         function getFileFromServer(url, divID, isJSON){
@@ -505,7 +505,7 @@
         function sleep() {
            var currentTime = new Date().getTime();
 
-           while (currentTime + 2000 >= new Date().getTime()) {
+           while (currentTime + 3000 >= new Date().getTime()) {
            }
         }
       </script>
@@ -517,7 +517,7 @@
       <button type = "button" onclick = "changeColors('black','white')">Default </button>
       <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
-        <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
+        <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you would like to learn more about.<br>
         <button type = "button" onclick = "getLaunches()">Get Launches </button></p>
       </div>
 
