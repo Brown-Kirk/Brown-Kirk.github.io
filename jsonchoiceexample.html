@@ -196,8 +196,6 @@
               hideVideo();
               removeDiv("details");
               removeDiv("launchchoicea");
-              removeDiv("explanation");
-              removeDiv("explainInstructions");
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               for(var i in jsonObj.launches) {
@@ -223,10 +221,8 @@
                   + launchnumber + " is scheduled for " + jsonObj.launches[i].net
                   + ' <br><br>';
                 createDiv(divID, divInnerHTML);
-
               }
-            createExplanationInstructions();
-            createExplanation();
+              moveDivsToBottom();
             }
           }
           http_request.open("GET", data_file, true);
@@ -294,22 +290,31 @@
               var divID = "details";
               createDiv(divID,divInnerHTML);
               showVideo();
-              createExplanationInstructions();
-              createExplanation();
-              document.getElementById("explanation").className = "thisOne";
-                var c = document.getElementById("myCanvas");
-                var ctx = c.getContext("2d");
-                var imageObj = new Image();
-                width = 250;
-                height = 300;
-                imageObj.onload = function() {
-                  ctx.drawImage(imageObj,0,0,width,height);
-                };
-                imageObj.src = rocketImage;
+              createCanvas();
+              moveDivsToBottom();
             }
           }
           http_request.open("GET", launchurl, true);
           http_request.send();
+        }
+        function moveDivsToBottom() {
+          removeDiv("explainInstructions");
+          removeDiv("explanation");
+          removeDiv("buttons");
+          createHideButtons();
+          createExplanationInstructions();
+          createExplanation();
+        }
+        function createCanvas() {
+          var c = document.getElementById("myCanvas");
+          var ctx = c.getContext("2d");
+          var imageObj = new Image();
+          width = 250;
+          height = 300;
+          imageObj.onload = function() {
+            ctx.drawImage(imageObj,0,0,width,height);
+          };
+          imageObj.src = rocketImage;
         }
         function createExplanationInstructions() {
           var divID = "explainInstructions";
@@ -384,6 +389,12 @@
             + '  example of changing the class name, as it only made sense in one area of my script. I use the code:'
             + '<code>document.getElementById("explanation").className = "thisOne";</code>'
             + 'to change the class of the “explanation” div to “thisOne”. However, I have several examples of changing other properties. In order to show and hide this explanation, I use the .style.display = “none” or = “block” property. I use this in two separate functions – one to hide the explanation, one to show it. I also show how you can use JavaScript to change all of the elements with a certain class. Using the changeFontColor function, I cycle through every element with the class name of “thisOne” and change the font color to blue. </p>'
+          createDiv(divID,divInnerHTML);
+        }
+        function createHideButtons() {
+          var divID = "buttons";
+          var divInnerHTML = '<button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>'
+            + '<button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>';
           createDiv(divID,divInnerHTML);
         }
         function hideExplanation() {
@@ -466,9 +477,6 @@
       <div id = "central">
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
         <button type = "button" onclick = "getFileFromServer( '/ajaxtextfile.txt', 'Textdiv', false )">Get Launches </button></p>
-      </div>
-      <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
-      <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
       </div>
 
       <audio id="rocketSound">
