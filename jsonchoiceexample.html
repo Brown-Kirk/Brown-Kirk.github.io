@@ -174,9 +174,9 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          setTimeout(createWaiting(),3);
-          setTimeout(removeDiv("waiting"),6);
-          setTimeout(getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false),6);
+          createWaiting();
+          setTimeout('removeDiv("waiting")',asec*3);
+          setTimeout("getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false)",3);
         }
         function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
