@@ -214,7 +214,7 @@
               hideVideo();
               removeDiv("details");
               removeDiv("launchchoicea");
-              createDiv("waiting"," ");
+              createWaiting();
               sleep();
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
@@ -475,6 +475,17 @@
           div.id = divID;
           //Create the content to be displayed in the new div
           div.innerHTML = divInnerHTML;
+          //Add what we just created to the div element
+          document.body.appendChild(div);
+        }
+        function createWaiting () {
+          //Create a new Div
+          var div = document.createElement('div');
+          //Assign an ID to the div
+          div.id = "waiting";
+          //Create the content to be displayed in the new div
+          div.innerHTML = "";
+          div.className = "waiting";
           //Add what we just created to the div element
           document.body.appendChild(div);
         }
