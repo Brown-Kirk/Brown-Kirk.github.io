@@ -194,8 +194,8 @@
 
             if (http_request.readyState == 4  ){
               hideVideo();
-              removeDiv('details');
-              removeDiv('launchchoicea');
+              removeDiv("details");
+              removeDiv("launchchoicea");
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               var launchnumber = localStorage.getItem("launchNumberSaved");
@@ -320,13 +320,6 @@
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
               var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br>'
-              var launchWindowDetail = '<h3>Launch Window</h3><p>' + launchwindowfull + '</p>';
-              var launchSiteDetail = '<h3>Launch Site</h3><p>' + launchsite + '</p>';
-              var rocketNameDetail = '<h3>Rocket Name</h3><p>' + rocketname + '</p>';
-              var rocketOwnerDetail = '<h3>Rocket Owner</h3><p>' + rocketagency + '</p>';
-              var missionNameDetails = '<h3>Mission Name</h3><p>' + mission + '</p>';
-              var missionDescDetails = '<h3>Mission Details</h3><p>' + missiondetails + '</p>';
-              var rawJSONvalue = '<h3>Raw JSON Values</h3><p>' + rawJSON + '</p>';
               var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
               //Combining all those paragraphs into one div
               //var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
