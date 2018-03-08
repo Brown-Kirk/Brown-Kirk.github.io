@@ -502,11 +502,12 @@
             document.body.removeChild(div);
           }
         }
-        function sleep() {
+        function sleep(callback) {
            var currentTime = new Date().getTime();
 
            while (currentTime + 3000 >= new Date().getTime()) {
            }
+           callback();
         }
       </script>
       <title>Space Launch Information Retrieval</title>
