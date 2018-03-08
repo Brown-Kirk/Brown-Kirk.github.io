@@ -201,7 +201,7 @@
               var launchnumber = localStorage.getItem("launchNumberSaved");
               //Assign an elementID variable that we can use to create a new div
               var launchelementID = "launchchoicea" ;
-              var launchElementDivs = document.getElementById(launchelementID);
+              /*var launchElementDivs = document.getElementById(launchelementID);
               //If the div already exists, clear it so we can start from scratch
               if (launchElementDivs != null) {
                 launchElementDivs.parentNode.removeChild(launchElementDivs);
@@ -211,18 +211,17 @@
               //If the div already exists, clear it so we can start from scratch
               if (detailsDiv != null) {
                 detailsDiv.parentNode.removeChild(detailsDiv);
-              }
+              }*/
               //Create the new URL to retrieve detailed information about the selected launch
               var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
-              //Create a new Div
-              var div = document.createElement('div');
               //Assign an ID to the div
-              div.id = launchelementID;
+              divID = launchelementID;
               //Create the content to be displayed in the new div
-              div.innerHTML = "Would you like to view the launch you selected last time? (Launch #" + launchnumber + ") " + '<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Yes </button> <br><br>';
-              //Add what we just created to the div element
-              document.body.appendChild(div);
-              //Since we know this JSON is a list of items, go through each one and assign variables based on the values
+              divInnerHTML = "Would you like to view the launch you selected last time? (Launch #" + launchnumber + ") " + '<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Yes </button> <br><br>';
+              var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
+              createDiv(divID,divInnerHTML)
+
+
               for(var i in jsonObj.launches) {
                 //Save the number of items in this list as a variable. This is used later to help us remove unused div's
                 sessionStorage.setItem("launchcount",i);
@@ -353,6 +352,16 @@
           }
           http_request.open("GET", data_file, true);
           http_request.send();
+        }
+        function createDiv (divID, divInnerHTML) {
+          //Create a new Div
+          var div = document.createElement('div');
+          //Assign an ID to the div
+          div.id = divID;
+          //Create the content to be displayed in the new div
+          div.innerHTML = divInnerHTML;
+          //Add what we just created to the div element
+          document.body.appendChild(div);
         }
         function hideExplanation() {
           document.body.style.width = '800px';
