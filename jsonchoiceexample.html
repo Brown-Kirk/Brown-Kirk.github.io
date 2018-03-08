@@ -174,7 +174,6 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          sleep();
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
         }
         function getFileFromServer(url, divID, isJSON){
@@ -334,6 +333,7 @@
         }
         function initialPageLoad() {
           init();
+          sleep();
           document.body.style.width = '800px';
           moveDivsToBottom();
           hideExplanation();
