@@ -167,6 +167,14 @@
         I retrieve that file and insert the value (the URL in the file) into the loadJSON function as the source for the data_file
         variable.
         */
+        function getLaunches(url, divID, isJSON) {
+          hideVideo();
+          removeDiv("details");
+          removeDiv("launchchoicea");
+          createWaiting();
+          sleep();
+          getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
+        }
         function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
@@ -211,11 +219,6 @@
           http_request.onreadystatechange = function(){
 
             if (http_request.readyState == 4  ){
-              hideVideo();
-              removeDiv("details");
-              removeDiv("launchchoicea");
-              createWaiting();
-              sleep();
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               for(var i in jsonObj.launches) {
@@ -512,7 +515,7 @@
       <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
-        <button type = "button" onclick = "getFileFromServer( '/ajaxtextfile.txt', 'Textdiv', false )">Get Launches </button></p>
+        <button type = "button" onclick = "getLaunches()">Get Launches </button></p>
       </div>
 
       <audio id="rocketSound">
