@@ -224,7 +224,7 @@
                 //Add what we just created to the div element
                 document.body.appendChild(div);
                 */
-                var divID = launchelementID;
+                var divID = "launchchoice" + i;
                 var divInnerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + " launch number "
                   + launchnumber + " is scheduled for " + jsonObj.launches[i].net
                   + ' <br><br>';
