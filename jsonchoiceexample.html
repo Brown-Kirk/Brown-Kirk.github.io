@@ -174,7 +174,8 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          createWaiting(function() {sleep(function() {getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false)})});
+          createWaiting(function() {sleep()});
+          getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false)
         }
         function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
@@ -501,12 +502,11 @@
             document.body.removeChild(div);
           }
         }
-        function sleep(callback) {
+        function sleep() {
            var currentTime = new Date().getTime();
 
            while (currentTime + 2000 >= new Date().getTime()) {
            }
-           callback();
         }
       </script>
       <title>Space Launch Information Retrieval</title>
