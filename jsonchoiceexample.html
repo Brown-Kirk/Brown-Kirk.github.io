@@ -291,11 +291,11 @@
               createDiv(divID,divInnerHTML);
               showVideo();
               createCanvas();
+              moveDivsToBottom();
             }
           }
           http_request.open("GET", launchurl, true);
           http_request.send();
-          moveDivsToBottom();
         }
         function moveDivsToBottom() {
           removeDiv("explainInstructions");
