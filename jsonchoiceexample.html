@@ -168,6 +168,7 @@
         variable.
         */
         function getLaunches(url, divID, isJSON) {
+          init();
           hideVideo();
           removeDiv("details");
           removeDiv("launchchoicea");
@@ -255,6 +256,7 @@
         //This function takes the values from the selected launch and pulls back detailed information about that launch
         //Not commenting for several lines. See similar function above
         function loadSecondJSON(launchurl){
+          init();
           var http_request = new XMLHttpRequest();
           try{
             http_request = new XMLHttpRequest();
