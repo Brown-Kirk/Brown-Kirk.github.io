@@ -216,14 +216,6 @@
                 var launchnumber = jsonObj.launches[i].id;
                 //Create the new URL to retrieve detailed information about the selected launch
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
-                //Create a new Div
-                /*
-                var div = document.createElement('div');
-                //Assign an ID to the div
-                //Create the content to be displayed in the new div
-                //Add what we just created to the div element
-                document.body.appendChild(div);
-                */
                 var divID = "launchchoice" + i;
                 var divInnerHTML = '<button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + " launch number "
                   + launchnumber + " is scheduled for " + jsonObj.launches[i].net
@@ -277,28 +269,26 @@
               }
               while (launchcount >= 0);
               //Here we're pulling individual values from the JSON
-              var launchstart = jsonObj2.launches[0].windowstart;
-              var launchend = jsonObj2.launches[0].windowend;
+              //var launchstart = jsonObj2.launches[0].windowstart;
+              //var launchend = jsonObj2.launches[0].windowend;
               var launchdate = jsonObj2.launches[0].net;
               var launchNumberToSave = jsonObj2.launches[0].id;
               localStorage.setItem("launchNumberSaved", launchNumberToSave );
               //Combining these two into one statement, just to make it easier to post into the page later
-              var launchwindowfull = launchstart + " - " + launchend;
+              //var launchwindowfull = launchstart + " - " + launchend;
               var launchsite = jsonObj2.launches[0].location.pads[0].name;
               var rocketname = jsonObj2.launches[0].rocket.name;
               var rocketagency = jsonObj2.launches[0].rocket.agencies[0].name;
-              var mission = jsonObj2.launches[0].missions[0].name;
+              //var mission = jsonObj2.launches[0].missions[0].name;
               var missiondetails = jsonObj2.launches[0].missions[0].description;
               var rocketImage = jsonObj2.launches[0].rocket.imageURL;
-              var launchVideo = jsonObj2.launches[0].vidURLs[0];
+              //var launchVideo = jsonObj2.launches[0].vidURLs[0];
               //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
-              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br>';
+              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '</p>';
               var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
-              //Combining all those paragraphs into one div
-              //var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
-              var divInnerHTML = launchinfo + rocketImageCanvas; //+ rawJSONvalue;
+              var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
               createDiv(divID,divInnerHTML);
               showVideo();
@@ -318,16 +308,6 @@
           }
           http_request.open("GET", data_file, true);
           http_request.send();
-        }
-        function createDiv (divID, divInnerHTML) {
-          //Create a new Div
-          var div = document.createElement('div');
-          //Assign an ID to the div
-          div.id = divID;
-          //Create the content to be displayed in the new div
-          div.innerHTML = divInnerHTML;
-          //Add what we just created to the div element
-          document.body.appendChild(div);
         }
         function hideExplanation() {
           document.body.style.width = '800px';
@@ -374,6 +354,16 @@
               tagToChange[i].style.color = text;
             }
           document.body.style.backgroundColor = background;
+        }
+        function createDiv (divID, divInnerHTML) {
+          //Create a new Div
+          var div = document.createElement('div');
+          //Assign an ID to the div
+          div.id = divID;
+          //Create the content to be displayed in the new div
+          div.innerHTML = divInnerHTML;
+          //Add what we just created to the div element
+          document.body.appendChild(div);
         }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
