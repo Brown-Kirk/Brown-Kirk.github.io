@@ -289,7 +289,8 @@
               var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
               var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
-              createDetails(divID,divInnerHTML);
+              createDiv(divID,divInnerHTML);
+              createCanvas(rocketImage);
               showVideo();
               moveDivsToBottom();
             }
@@ -311,8 +312,7 @@
           moveDivsToBottom();
           hideExplanation();
         }
-        function createDetails(divID,divInnerHTML) {
-          createDiv(divID,divInnerHTML);
+        function createCanvas(rocketImage) {
           var c = document.getElementById("myCanvas");
           var ctx = c.getContext("2d");
           var imageObj = new Image();
