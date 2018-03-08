@@ -178,6 +178,8 @@
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
         }
         function getFileFromServer(url, divID, isJSON){
+          sleep();
+          removeDiv("waiting")
           //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
           //Begin monitoring for a response from the server
@@ -493,8 +495,6 @@
           div.className = "waiting";
           //Add what we just created to the div element
           document.body.appendChild(div);
-          sleep();
-          //removeDiv("waiting")
         }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
