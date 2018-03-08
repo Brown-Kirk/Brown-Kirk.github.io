@@ -149,7 +149,7 @@
         I retrieve that file and insert the value (the URL in the file) into the loadJSON function as the source for the data_file
         variable.
         */
-        function getFileFromServer(url, divId, isJSON){
+        function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
           //Begin monitoring for a response from the server
@@ -196,6 +196,8 @@
               hideVideo();
               removeDiv("details");
               removeDiv("launchchoicea");
+              removeDiv("explanation");
+              removeDiv("explainInstructions");
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               for(var i in jsonObj.launches) {
@@ -223,7 +225,7 @@
                 createDiv(divID, divInnerHTML);
 
               }
-            document.body.appendChild(document.getElementById('explainInstructions'));
+            createExplanationInstructions();
             document.body.appendChild(document.getElementById('explanation'));
             document.getElementById("explanation").className = "thisOne";
             }
@@ -291,8 +293,8 @@
               var divID = "details";
               createDiv(divID,divInnerHTML);
               showVideo();
-              document.body.appendChild(document.getElementById('explainInstructions'));
-              document.body.appendChild(document.getElementById("explanation"));
+              createExplanationInstructions();
+              createExplanation();
               document.getElementById("explanation").className = "thisOne";
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
@@ -307,6 +309,81 @@
           }
           http_request.open("GET", launchurl, true);
           http_request.send();
+        }
+        function createExplanationInstructions() {
+          var divID = "explainInstructions";
+          var divInnerHTML = '<p>This page retrieves information from https://launchlibrary.net . In order to view details regarding how this page displays knowledge of required CIT261 criteria,'
+            + 'click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>'
+          createDiv(divID,divInnerHTML);
+        }
+        function createExplanation() {
+          var divID = "explanation";
+          var divInnerHTML = '<h3>CIT261 Explanation</h3>'
+            + '<h3>AJAX</h3>' +
+            + '<p>The primary function of this page is to retrieve a JSON file from an external site, in this case, launchlibrary.net. It does this using the AJAX request shown'
+            + '  below. This function takes the URL or location of the file as a parameter. </p>'
+            + '<pre><code>function loadJSON(data_file){'
+            + '        var http_request = new XMLHttpRequest();'
+            + '        try{'
+            + '          http_request = new XMLHttpRequest();'
+            + '        }'
+            + '        catch (e){'
+            + '          try{'
+            + '            http_request = new ActiveXObject("Msxml2.XMLHTTP");'
+            + '          }'
+            + '          catch (e) {'
+            + '            try{'
+            + '              http_request = new ActiveXObject("Microsoft.XMLHTTP");'
+            + '            }'
+            + '            catch (e){'
+            + '              alert("Well, crap... That was not supposed to happen.");'
+            + '              return false;'
+            + '            }'
+            + '          }'
+            + '        }'
+            + '        http_request.onreadystatechange = function(){'
+            + '          if (http_request.readyState == 4  ){'
+            + '            var jsonObj = JSON.parse(http_request.responseText);'
+            + '            for(var i in jsonObj.launches) {'
+            + '              sessionStorage.setItem("launchcount",i);'
+            + '              var launchnumber = jsonObj.launches[i].id;'
+            + '              var launchelementID = "launchchoice" + i;'
+            + '              var launchElementDivs = document.getElementById(launchelementID);'
+            + '              if (launchElementDivs != null) {'
+            + '                launchElementDivs.parentNode.removeChild(launchDetailDiv);'
+            + '              }'
+            + '              var detailsDiv = document.getElementById("details");'
+            + '              if (detailsDiv != null) {'
+            + '                detailsDiv.parentNode.removeChild(detailsDiv);'
+            + '              }'
+            + '              var launchurl = "https://launchlibrary.net/1.3/launch/" + launchnumber + "";'
+            + '              var div = document.createElement("div");'
+            + '              div.id = launchelementID;'
+            + '              div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' //(commented to get this code to display)<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> <br><br>';'
+            + '              document.body.appendChild(div);'
+            + '              createExplanation();'
+            + '              document.getElementById("explanation").className = "thisOne";'
+            + '            }'
+            + '          }'
+            + '        }</code></pre>'
+            + '<h3>JSON</h3>'
+            + '<p>Once we have received the JSON through the above code, we parse it using the JSON.parse function. From here, we toss it into a for each, processing each of the five primary objects contained in the JSON.'
+            + '  Later on, we use the stringify option to get it back into JSON format so that we can display to the user the raw JSON data.</p>'
+            + '<code>var jsonObj = JSON.parse(http_request.responseText);</code>'
+            + '<h3>Local Storage</h3>'
+            + '<p>Although I hope to add additional storage options, I am currently using the sessionStorage  command to save the number of launches we have pulled data for. This is then retrieved later, again using the'
+            + '  sessionStorage command, in order to remove the DIV’s for each launch and then display the details for just the chosen item. I’d be happy to show how to save and retrieve other types of objects, but they'
+            + '  would all be very similar to this. I did choose to only save using sessionStorage, and not using localStorage, so that the data would be specific to this browser session.</p>'
+            + '<h3>DOM</h3>'
+            + '<p>This is used quite a bit throughout the entire script. I use document.getElementById quite a bit to identify specific DIV’s, sometimes following that up with xxxx.parentNode.removeChild to remove'
+            + '  an existing DIV. I utilize document.createElement to create new DIV’s, innerHTML to create content within the DIV, document.body.appendChild to place the DIV. There are other examples throughout the'
+            + '  script. I also use the “appendChild” at times in order to get my explanation to always be at the bottom of the page. </p>'
+            + '<h3>CSS Class Manipulation</h3>'
+            + '<p>I interpreted this requirement in two ways – one, changing the class name of an object using JavaScript or , two, changing the properties of an object. So, I’ve done both in this script. I only have one'
+            + '  example of changing the class name, as it only made sense in one area of my script. I use the code:'
+            + '<code>document.getElementById("explanation").className = "thisOne";</code>'
+            + 'to change the class of the “explanation” div to “thisOne”. However, I have several examples of changing other properties. In order to show and hide this explanation, I use the .style.display = “none” or = “block” property. I use this in two separate functions – one to hide the explanation, one to show it. I also show how you can use JavaScript to change all of the elements with a certain class. Using the changeFontColor function, I cycle through every element with the class name of “thisOne” and change the font color to blue. </p>'
+          createDiv(divID,divInnerHTML);
         }
         function hideExplanation() {
           document.body.style.width = '800px';
@@ -371,6 +448,12 @@
             document.body.removeChild(div);
           }
         }
+        function sleep() {
+           var currentTime = new Date().getTime();
+
+           while (currentTime + 2000 >= new Date().getTime()) {
+           }
+        }
       </script>
       <title>Space Launch Information Retrieval</title>
     </head>
@@ -383,79 +466,10 @@
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
         <button type = "button" onclick = "getFileFromServer( '/ajaxtextfile.txt', 'Textdiv', false )">Get Launches </button></p>
       </div>
-      <div id = "explainInstructions"><p>This page retrieves information from https://launchlibrary.net . In order to view details regarding how this page displays knowledge of required CIT261 criteria,
-      click the "Show Explanation" button. To hide this explanation, click the "Hide Explanation" </p>
       <button id = "hideButton" type = "button" onclick = "hideExplanation()">Hide Explanation</button>
       <button id = "showButton" type = "button" onclick = "showExplanation()">Show Explanation</button>
       </div>
-      <div id = "explanation">
-        <h3>CIT261 Explanation</h3>
-        <h3>AJAX</h3>
-        <p>The primary function of this page is to retrieve a JSON file from an external site, in this case, launchlibrary.net. It does this using the AJAX request shown
-          below. This function takes the URL or location of the file as a parameter. </p>
-        <pre><code>function loadJSON(data_file){
-                var http_request = new XMLHttpRequest();
-                try{
-                  http_request = new XMLHttpRequest();
-                }
-                catch (e){
-                  try{
-                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
-                  }
-                  catch (e) {
-                    try{
-                      http_request = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    catch (e){
-                      alert("Well, crap... That wasn't supposed to happen.");
-                      return false;
-                    }
-                  }
-                }
-                http_request.onreadystatechange = function(){
-                  if (http_request.readyState == 4  ){
-                    var jsonObj = JSON.parse(http_request.responseText);
-                    for(var i in jsonObj.launches) {
-                      sessionStorage.setItem("launchcount",i);
-                      var launchnumber = jsonObj.launches[i].id;
-                      var launchelementID = "launchchoice" + i;
-                      var launchElementDivs = document.getElementById(launchelementID);
-                      if (launchElementDivs != null) {
-                        launchElementDivs.parentNode.removeChild(launchDetailDiv);
-                      }
-                      var detailsDiv = document.getElementById('details');
-                      if (detailsDiv != null) {
-                        detailsDiv.parentNode.removeChild(detailsDiv);
-                      }
-                      var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
-                      var div = document.createElement('div');
-                      div.id = launchelementID;
-                      div.innerHTML = "Launch: " + launchnumber + " Date: " + jsonObj.launches[i].windowstart + ' //(commented to get this code to display)<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> <br><br>';
-                      document.body.appendChild(div);
-                      document.body.appendChild(document.getElementById('explanation'));
-                      document.getElementById("explanation").className = "thisOne";
-                    }
-                  }
-                }</code></pre>
-        <h3>JSON</h3>
-        <p>Once we have received the JSON through the above code, we parse it using the JSON.parse function. From here, we toss it into a for each, processing each of the five primary objects contained in the JSON.
-          Later on, we use the stringify option to get it back into JSON format so that we can display to the user the raw JSON data.</p>
-        <code>var jsonObj = JSON.parse(http_request.responseText);</code>
-        <h3>Local Storage</h3>
-        <p>Although I hope to add additional storage options, I am currently using the sessionStorage  command to save the number of launches we have pulled data for. This is then retrieved later, again using the
-          sessionStorage command, in order to remove the DIV’s for each launch and then display the details for just the chosen item. I’d be happy to show how to save and retrieve other types of objects, but they
-          would all be very similar to this. I did choose to only save using sessionStorage, and not using localStorage, so that the data would be specific to this browser session.</p>
-        <h3>DOM</h3>
-        <p>This is used quite a bit throughout the entire script. I use document.getElementById quite a bit to identify specific DIV’s, sometimes following that up with xxxx.parentNode.removeChild to remove
-          an existing DIV. I utilize document.createElement to create new DIV’s, innerHTML to create content within the DIV, document.body.appendChild to place the DIV. There are other examples throughout the
-          script. I also use the “appendChild” at times in order to get my explanation to always be at the bottom of the page. </p>
-        <h3>CSS Class Manipulation</h3>
-        <p>I interpreted this requirement in two ways – one, changing the class name of an object using JavaScript or , two, changing the properties of an object. So, I’ve done both in this script. I only have one
-          example of changing the class name, as it only made sense in one area of my script. I use the code:
-        <code>document.getElementById("explanation").className = "thisOne";</code>
-        to change the class of the “explanation” div to “thisOne”. However, I have several examples of changing other properties. In order to show and hide this explanation, I use the .style.display = “none” or = “block” property. I use this in two separate functions – one to hide the explanation, one to show it. I also show how you can use JavaScript to change all of the elements with a certain class. Using the changeFontColor function, I cycle through every element with the class name of “thisOne” and change the font color to blue. </p>
 
-      </div>
       <audio id="rocketSound">
         <source src="https://www.nasa.gov/mp3/590189main_ringtone_131_launchNats.mp3" type="audio/mpeg">
       </audio>
