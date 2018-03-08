@@ -286,18 +286,10 @@
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
               var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '</p>';
-              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>var c = document.getElementById("myCanvas");'
-                + 'var ctx = c.getContext("2d");'
-                + 'var imageObj = new Image();'
-                + 'width = 250;'
-                + 'height = 300;'
-                + 'imageObj.onload = function() {'
-                + 'ctx.drawImage(imageObj,0,0,width,height);';
-                + '};'
-                + 'imageObj.src = rocketImage;'
+              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
               var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
-              createDiv(divID,divInnerHTML);
+              createDetails(divID,divInnerHTML);
               showVideo();
               moveDivsToBottom();
             }
@@ -319,8 +311,17 @@
           moveDivsToBottom();
           hideExplanation();
         }
-        function createCanvas() {
-
+        function createDetails(divID,divInnerHTML) {
+          createDiv(divID,divInnerHTML);
+          var c = document.getElementById("myCanvas");
+          var ctx = c.getContext("2d");
+          var imageObj = new Image();
+          width = 250;
+          height = 300;
+          imageObj.onload = function() {
+            ctx.drawImage(imageObj,0,0,width,height);
+          };
+          imageObj.src = rocketImage;
         }
         function createExplanationInstructions() {
           var divID = "explainInstructions";
