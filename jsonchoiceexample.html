@@ -226,8 +226,7 @@
 
               }
             createExplanationInstructions();
-            document.body.appendChild(document.getElementById('explanation'));
-            document.getElementById("explanation").className = "thisOne";
+            createExplanation();
             }
           }
           http_request.open("GET", data_file, true);
