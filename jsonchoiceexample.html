@@ -290,13 +290,12 @@
               //Here I wanted to use stringify to turn the object back into a JSON. Then I'll present that on the page as raw data.
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
-              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br>'
-              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>'
+              var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '<br>';
+              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
               //Combining all those paragraphs into one div
               //var newDivValues = launchinfo + launchWindowDetail + launchSiteDetail + rocketNameDetail + rocketOwnerDetail + rocketImageCanvas + missionNameDetails + missionDescDetails + rawJSONvalue;
-              var newDivValues = launchinfo + rocketImageCanvas; //+ rawJSONvalue;
-              divID = "details";
-              divInnerHTML = newDivValues;
+              var divInnerHTML = launchinfo + rocketImageCanvas; //+ rawJSONvalue;
+              var divID = "details";
               createDiv(divID,divInnerHTML);
               showVideo();
               document.body.appendChild(document.getElementById('explainInstructions'));
