@@ -174,12 +174,9 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          createWaiting();
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
         }
         function getFileFromServer(url, divID, isJSON){
-          sleep();
-          removeDiv("waiting")
           //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
           //Begin monitoring for a response from the server
@@ -485,17 +482,6 @@
           //Add what we just created to the div element
           document.body.appendChild(div);
         }
-        function createWaiting () {
-          //Create a new Div
-          var div = document.createElement('div');
-          //Assign an ID to the div
-          div.id = "waiting";
-          //Create the content to be displayed in the new div
-          div.innerHTML = "";
-          div.className = "waiting";
-          //Add what we just created to the div element
-          document.body.appendChild(div);
-        }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
           //If the div already exists, clear it so we can start from scratch
@@ -513,9 +499,30 @@
       <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="initialPageLoad()">
-      <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
-      <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
-      <button type = "button" onclick = "changeColors('black','white')">Default </button>
+      <div id="loading" class="waiting" style="position:absolute; width:100%; text-align:center; top:300px;">
+      </div>
+      <script>
+        var ld=(document.all);
+        var ns4=document.layers;
+        var ns6=document.getElementById&&!document.all;
+        var ie4=document.all;
+        if (ns4)
+          ld=document.loading;
+        else if (ns6)
+          ld=document.getElementById("loading").style;
+        else if (ie4)
+          ld=document.all.loading.style;
+          function init()
+          {
+            if(ns4){ld.visibility="hidden";}
+            else if (ns6||ie4) ld.display="none";
+          }
+        </script>
+      <div id="accessibillityButtons">
+        <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
+        <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
+        <button type = "button" onclick = "changeColors('black','white')">Default </button>
+      </div>
       <h1>Space Launch Information Retrieval</h1>
       <div id = "central">
         <p>Click the "Get Launches" button below to display the next 10 space rocket launches in the world. You may then click on the "Details" button next to the launch you'd like to learn more about.<br>
