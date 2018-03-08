@@ -174,8 +174,9 @@
           removeDiv("explanation");
           removeDiv("buttons");
           removeDiv("explainInstructions");
-          createWaiting(function() {sleep(function(){removeDiv("waiting")})};
-          getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false)
+          createWaiting();
+          setTimeout(removeDiv("waiting"),3);
+          setTimeout(getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false),3);
         }
         function getFileFromServer(url, divID, isJSON){
           //setting a new instance of XMLHttpRequest
@@ -483,7 +484,7 @@
           //Add what we just created to the div element
           document.body.appendChild(div);
         }
-        function createWaiting (callback) {
+        function createWaiting () {
           //Create a new Div
           var div = document.createElement('div');
           //Assign an ID to the div
@@ -493,7 +494,6 @@
           div.className = "waiting";
           //Add what we just created to the div element
           document.body.appendChild(div);
-          callback;
         }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
@@ -502,12 +502,11 @@
             document.body.removeChild(div);
           }
         }
-        function sleep(callback) {
+        function sleep() {
            var currentTime = new Date().getTime();
 
            while (currentTime + 3000 >= new Date().getTime()) {
            }
-           callback();
         }
       </script>
       <title>Space Launch Information Retrieval</title>
