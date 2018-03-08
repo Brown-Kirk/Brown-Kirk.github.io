@@ -189,11 +189,6 @@
         //Run the loadJSON function with data_file as the sole parameter
         function loadJSON(data_file){
           //Here we are opening up another AJAX request. This one, however, should take browser better into account.
-          hideVideo();
-          removeDiv("details");
-          removeDiv("launchchoicea");
-          createDiv("waiting"," ");
-          sleep();
           var http_request = new XMLHttpRequest();
           try{
             http_request = new XMLHttpRequest();
@@ -216,6 +211,11 @@
           http_request.onreadystatechange = function(){
 
             if (http_request.readyState == 4  ){
+              hideVideo();
+              removeDiv("details");
+              removeDiv("launchchoicea");
+              createDiv("waiting"," ");
+              sleep();
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               for(var i in jsonObj.launches) {
