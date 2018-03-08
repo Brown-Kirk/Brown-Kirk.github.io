@@ -288,12 +288,10 @@
               var launchcount = sessionStorage.getItem("launchcount");
               //Now we are going to use a do...while loop to remove all those prior elements so we don't have those
               //buttons just sitting around.
-              var elem = document.getElementById("launchchoicea");
-              elem.parentNode.removeChild(elem);
+              removeDiv("launchchoicea");
               do {
                 var launchelementID = "launchchoice" + launchcount;
-                var elem = document.getElementById(launchelementID);
-                elem.parentNode.removeChild(elem);
+                removeDiv(launchelementID);
                 launchcount--;
               }
               while (launchcount >= 0);
