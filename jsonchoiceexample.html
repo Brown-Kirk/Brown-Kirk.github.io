@@ -138,26 +138,6 @@
       from {top: 200px;}
       to {top: -500px;}
     }
-    .waiting {
-      border: 6px solid #9D2235;
-      border-radius: 50%;
-      border-top: 6px solid #f3f3f3;
-      width: 40px;
-      height: 40px;
-      -webkit-animation: spin 2s linear infinite; /* Safari */
-      animation: spin 2s linear 2.75;
-    }
-
-    /* Safari */
-    @-webkit-keyframes spin {
-      0% { -webkit-transform: rotate(0deg); }
-      100% { -webkit-transform: rotate(360deg); }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
   <head>
       <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
@@ -214,8 +194,8 @@
 
             if (http_request.readyState == 4  ){
               hideVideo();
-              removeDivs('details');
-              removeDivs('launchchoicea');
+              removeDiv('details');
+              removeDiv('launchchoicea');
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
               var launchnumber = localStorage.getItem("launchNumberSaved");
