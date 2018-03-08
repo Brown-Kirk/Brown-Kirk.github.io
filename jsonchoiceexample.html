@@ -368,7 +368,7 @@
           var div = document.getElementById(divName);
           //If the div already exists, clear it so we can start from scratch
           if (div != null) {
-            div.parentNode.removeChild(divName);
+            document.body.removeChild(divName);
           }
         }
       </script>
