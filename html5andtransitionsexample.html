@@ -1,121 +1,5 @@
 <html>
   <style type="text/css">
-    canvas:hover {
-        /* Start the shake animation and make the animation last for 0.5 seconds */
-        animation: shake 4s;
-        /* When the animation is finished, start again */
-        animation-iteration-count: 1;
-    }
-
-    @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); }
-      1% { transform: translate(-1px, -2px) rotate(-1deg); }
-      2% { transform: translate(-3px, 0px) rotate(1deg); }
-      3% { transform: translate(3px, 2px) rotate(0deg); }
-      4% { transform: translate(1px, -1px) rotate(1deg); }
-      5% { transform: translate(-1px, 2px) rotate(-1deg); }
-      6% { transform: translate(-3px, 1px) rotate(0deg); }
-      7% { transform: translate(3px, 1px) rotate(-1deg); }
-      8% { transform: translate(-1px, -1px) rotate(1deg); }
-      9% { transform: translate(1px, 2px) rotate(0deg); }
-      10% { transform: translate(1px, -2px) rotate(-1deg); }
-      11% { transform: translate(-3px, 1px) rotate(0deg); }
-      12% { transform: translate(3px, 1px) rotate(-1deg); }
-      13% { transform: translate(-1px, -1px) rotate(1deg); }
-      14% { transform: translate(1px, 2px) rotate(0deg); }
-      10% { transform: translate(1px, -2px) rotate(-1deg); }
-      15% { transform: translate(0px, -10px) rotate(0deg); }
-      16% { transform: translate(0px, -20px) rotate(0deg); }
-      17% { transform: translate(0px, -30px) rotate(0deg); }
-      18% { transform: translate(0px, -40px) rotate(0deg); }
-      19% { transform: translate(0px, -50px) rotate(0deg); }
-      20% { transform: translate(0px, -60px) rotate(0deg); }
-      21% { transform: translate(0px, -70px) rotate(0deg); }
-      22% { transform: translate(0px, -80px) rotate(0deg); }
-      23% { transform: translate(0px, -90px) rotate(0deg); }
-      24% { transform: translate(0px, -100px) rotate(0deg); }
-      25% { transform: translate(0px, -110px) rotate(0deg); }
-      26% { transform: translate(0px, -120px) rotate(0deg); }
-      27% { transform: translate(0px, -130px) rotate(0deg); }
-      28% { transform: translate(0px, -140px) rotate(0deg); }
-      29% { transform: translate(0px, -150px) rotate(0deg); }
-      30% { transform: translate(0px, -160px) rotate(0deg); }
-      31% { transform: translate(0px, -170px) rotate(0deg); }
-      32% { transform: translate(0px, -180px) rotate(0deg); }
-      33% { transform: translate(0px, -190px) rotate(0deg); }
-      34% { transform: translate(0px, -200px) rotate(0deg); }
-      35% { transform: translate(0px, -210px) rotate(0deg); }
-      36% { transform: translate(0px, -220px) rotate(0deg); }
-      37% { transform: translate(0px, -230px) rotate(0deg); }
-      38% { transform: translate(0px, -240px) rotate(0deg); }
-      39% { transform: translate(0px, -250px) rotate(0deg); }
-      40% { transform: translate(0px, -260px) rotate(0deg); }
-      41% { transform: translate(0px, -270px) rotate(0deg); }
-      42% { transform: translate(0px, -280px) rotate(0deg); }
-      43% { transform: translate(0px, -290px) rotate(0deg); }
-      44% { transform: translate(0px, -300px) rotate(0deg); }
-      45% { transform: translate(0px, -310px) rotate(0deg); }
-      46% { transform: translate(0px, -320px) rotate(0deg); }
-      47% { transform: translate(0px, -330px) rotate(0deg); }
-      48% { transform: translate(0px, -340px) rotate(0deg); }
-      49% { transform: translate(0px, -350px) rotate(0deg); }
-      50% { transform: translate(0px, -360px) rotate(0deg); }
-      51% { transform: translate(0px, -370px) rotate(0deg); }
-      52% { transform: translate(0px, -380px) rotate(0deg); }
-      53% { transform: translate(0px, -390px) rotate(0deg); }
-      54% { transform: translate(0px, -400px) rotate(0deg); }
-      55% { transform: translate(0px, -410px) rotate(0deg); }
-      56% { transform: translate(0px, -420px) rotate(0deg); }
-      57% { transform: translate(0px, -430px) rotate(0deg); }
-      58% { transform: translate(0px, -440px) rotate(0deg); }
-      59% { transform: translate(0px, -450px) rotate(0deg); }
-      60% { transform: translate(0px, -460px) rotate(0deg); }
-      61% { transform: translate(0px, -470px) rotate(0deg); }
-      62% { transform: translate(0px, -480px) rotate(0deg); }
-      63% { transform: translate(0px, -490px) rotate(0deg); }
-      64% { transform: translate(0px, -500px) rotate(0deg); }
-      65% { transform: translate(0px, -510px) rotate(0deg); }
-      66% { transform: translate(0px, -520px) rotate(0deg); }
-      67% { transform: translate(0px, -530px) rotate(0deg); }
-      68% { transform: translate(0px, -540px) rotate(0deg); }
-      69% { transform: translate(0px, -550px) rotate(0deg); }
-      70% { transform: translate(0px, -560px) rotate(0deg); }
-      71% { transform: translate(0px, -570px) rotate(0deg); }
-      72% { transform: translate(0px, -580px) rotate(0deg); }
-      73% { transform: translate(0px, -590px) rotate(0deg); }
-      74% { transform: translate(0px, -600px) rotate(0deg); }
-      75% { transform: translate(0px, -610px) rotate(0deg); }
-      76% { transform: translate(0px, -620px) rotate(0deg); }
-      77% { transform: translate(0px, -630px) rotate(0deg); }
-      78% { transform: translate(0px, -640px) rotate(0deg); }
-      79% { transform: translate(0px, -650px) rotate(0deg); }
-      80% { transform: translate(0px, -660px) rotate(0deg); }
-      81% { transform: translate(0px, -670px) rotate(0deg); }
-      82% { transform: translate(0px, -680px) rotate(0deg); }
-      83% { transform: translate(0px, -690px) rotate(0deg); }
-      84% { transform: translate(0px, -700px) rotate(0deg); }
-      85% { transform: translate(0px, -710px) rotate(0deg); }
-      86% { transform: translate(0px, -720px) rotate(0deg); }
-      87% { transform: translate(0px, -730px) rotate(0deg); }
-      88% { transform: translate(0px, -740px) rotate(0deg); }
-      89% { transform: translate(0px, -750px) rotate(0deg); }
-      90% { transform: translate(0px, -760px) rotate(0deg); }
-      91% { transform: translate(0px, -770px) rotate(0deg); }
-      92% { transform: translate(0px, -780px) rotate(0deg); }
-      93% { transform: translate(0px, -790px) rotate(0deg); }
-      94% { transform: translate(0px, -800px) rotate(0deg); }
-      95% { transform: translate(0px, -810px) rotate(0deg); }
-      96% { transform: translate(0px, -820px) rotate(0deg); }
-      97% { transform: translate(0px, -830px) rotate(0deg); }
-      98% { transform: translate(0px, -840px) rotate(0deg); }
-      99% { transform: translate(0px, -850px) rotate(0deg); }
-      100% { transform: translate(0px, -860px) rotate(0deg); }
-    }
-    @keyframes launch {
-      from {top: 200px;}
-      to {top: -500px;}
-    }
-
     .skyImage img {
       -webkit-transition: all 1s ease; /* Safari and Chrome */
       -moz-transition: all 1s ease; /* Firefox */
@@ -137,7 +21,6 @@
       height:333px;
       overflow: hidden;
     }
-
   </style>
   <body>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/sC_kfwa5-kg?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>    <br>
@@ -145,22 +28,9 @@
     <p>Yes, Casablanca is a great movie, and a convenient example of using HTML
     iframes to embed YouTube videos. However, don't get caught up in it and
     forget to look over my other elements! Click on the "Retrieve Image" button below!</p>
-    <p>
-      <button id="getPicture" onclick="drawCanvas()">Retrieve Image</button>
-      <br><br>This button utilizes HTML5's Canvas to retrieve an image, resize
-      it, and place it in a defined location. It then utilizes the CSS :hover
-      property and @keyframes to create an animation meant to appear like the
-      spacecraft is launching. This animation and :hover property is also used
-      in my <a href=https://brown-kirk.github.io/jsonchoiceexample.html>
-      Space Launch Information Retrieval</a> page (hover over the image of the
-      rocket in the launch information).
-    </p>
     <div class="skyImage">
       <img  src="/delicate-arch-night-stars-landscape.jpg" alt="Awwwww... Pretty!"/>
     </div>
-    <canvas id="myCanvas" width="250" height="300">
-      Your browser does not support the HTML5 canvas tag.
-    </canvas>
     <br>
     <script>
       document.body.style.width = '800px';
