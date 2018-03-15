@@ -155,12 +155,27 @@
       Space Launch Information Retrieval</a> page (hover over the image of the
       rocket in the launch information).
     </p>
+    <div class="skyImage">
+      <img  src="/delicate-arch-night-stars-landscape.jpg" alt="Awwwww... Pretty!"/>
+    </div>
     <canvas id="myCanvas" width="250" height="300">
       Your browser does not support the HTML5 canvas tag.
     </canvas>
     <br>
-    <div class="skyImage">
-      <img  src="/delicate-arch-night-stars-landscape.jpg" alt="Awwwww... Pretty!"/>
-    </div>
+    <script>
+      document.body.style.width = '800px';
+      function drawCanvas() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var imageObj = new Image();
+        width = 250;
+        height = 300;
+        imageObj.onload = function() {
+          ctx.drawImage(imageObj,0,0,width,height);
+        };
+        imageObj.src = "https://s3.amazonaws.com/launchlibrary/RocketImages/Falcon+9+Full+Thrust_1920.jpg";
+      }
+    </script>
+
   </body>
 </html>
