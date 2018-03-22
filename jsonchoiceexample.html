@@ -325,7 +325,7 @@
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
               var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '</p>';
-              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
+              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
               var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
               createDiv(divID,divInnerHTML);
