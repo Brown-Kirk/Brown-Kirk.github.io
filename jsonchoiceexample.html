@@ -249,8 +249,9 @@
                 //Create the new URL to retrieve detailed information about the selected launch
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
                 var divID = "launchchoice" + i;
-                var divInnerHTML = "<ul><li onClick='loadSecondJSON(" + launchurl + ")'>jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net + ' </li></ul>'";
-                createDiv(divID, divInnerHTML);
+                var divOnClick = "loadSecondJSON(' + launchurl + ')"
+                var divInnerHTML = jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net + ' <br><br>';
+                createDiv(divID, divInnerHTML,divOnClick);
                 moveDivsToBottom();
               }
             }
@@ -480,13 +481,17 @@
             }
           document.body.style.backgroundColor = background;
         }
-        function createDiv (divID, divInnerHTML) {
+        function createDiv (divID, divInnerHTML, divOnClick) {
           //Create a new Div
           var div = document.createElement('div');
           //Assign an ID to the div
           div.id = divID;
           //Create the content to be displayed in the new div
           div.innerHTML = divInnerHTML;
+          if(divOnClick != "none") {
+              div.onclick = divOnClick;
+          }
+
           //Add what we just created to the div element
           document.body.appendChild(div);
         }
