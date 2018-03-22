@@ -350,6 +350,9 @@
           hideExplanation();
         }
         function initialPageLoad() {
+          var divID = "loading";
+          var divInnerHTML = "";
+          createDiv(divID,divInnerHTML);
           init();
           sleep();
           moveDivsToBottom();
@@ -535,8 +538,6 @@
       <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="initialPageLoad()">
-      <div id="loading" class="waiting" onload="loadingCircle()" style="position:absolute; top:150px;">
-      </div>
       <div id="accessibillityButtons">
         <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
         <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
