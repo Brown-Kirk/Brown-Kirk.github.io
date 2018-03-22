@@ -2,13 +2,10 @@
   <meta content="width=device-width, initial-scale=1">
   <style type="text/css">
     canvas:hover {
-        /* Start the shake animation and make the animation last for 0.5 seconds */
         animation: shake 18s;
-        /* When the animation is finished, start again */
         animation-iteration-count: 1;
     }
-
-    @keyframes shake {
+@keyframes shake {
         0% { transform: translate(1px, 1px) rotate(0deg); }
         0.3% { transform: translate(-1px, -2px) rotate(-1deg); }
         0.6% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -150,7 +147,6 @@
       -webkit-animation: spin 2s linear infinite; /* Safari */
       animation: spin 2s linear infinite;
     }
-    /* Safari */
     @-webkit-keyframes spin {
       0% { -webkit-transform: rotate(0deg); }
       100% { -webkit-transform: rotate(360deg); }
@@ -171,13 +167,7 @@
       <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
       <script type = "application/javascript">
 
-        /*The AJAX code is adapted from gtjames.github.io . The general structure is his, what I do with it is mine.
-        I wanted an example of retrieving a plain text file, but wanted it to do something. So, I put the URL of where I
-        want to pull my JSON file from in a txt file, and dropped that on my server. Using the getFileFromServer function,
-        I retrieve that file and insert the value (the URL in the file) into the loadJSON function as the source for the data_file
-        variable.
-        */
-        function getLaunches(url, divID, isJSON) {
+        function getLaunches() {
           init();
           hideVideo();
           removeDiv("details");
@@ -188,18 +178,12 @@
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
         }
         function getFileFromServer(url, divID, isJSON){
-          //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
-          //Begin monitoring for a response from the server
           ajaxtextvalue.onreadystatechange = function() {
-            //When a the server is ready and sends a response
-    				if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
-              //Take that response and assign it to the launchURLValue variable
-    					var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
-              //Call the loadJSON function using that variable
+        		if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
+        			var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
               loadJSON(launchURLValue);
     			}
-          //Send the get request
         	ajaxtextvalue.open("GET", url, true);
         	ajaxtextvalue.send();
         }
@@ -509,7 +493,6 @@
         }
         function sleep() {
            var currentTime = new Date().getTime();
-
            while (currentTime + 2000 >= new Date().getTime()) {
            }
         }
