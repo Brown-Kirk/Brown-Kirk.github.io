@@ -181,7 +181,7 @@
         	var ajaxtextvalue = new XMLHttpRequest();
           ajaxtextvalue.onreadystatechange = function() {
         		if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
-        			var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
+        			var launchURLValue = (isJSON) ? JSON.parse(ajaxtextvalue.responseText) : ajaxtextvalue.responseText;
               loadJSON(launchURLValue);
     			}
         	ajaxtextvalue.open("GET", url, true);
