@@ -258,9 +258,9 @@
 
                 var ul = document.getElementById("launchList");
                 var li = document.createElement("li");
-                li.appendChild(document.createTextNode(jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net));
                 li.setAttribute('onclick','loadSecondJSON(launchurl);'); // for FF
                 li.onclick = function() {loadSecondJSON(launchurl);}; // for IE
+                li.appendChild(document.createTextNode(jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net));
                 ul.appendChild(li);
               }
             }
