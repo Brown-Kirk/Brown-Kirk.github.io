@@ -247,15 +247,7 @@
                 var launchnumber = jsonObj.launches[i].id;
                 //Create the new URL to retrieve detailed information about the selected launch
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
-<<<<<<< HEAD
                 divInnerHTML = divInnerHTML + '<li onClick="loadSecondJSON(' + launchurl + ')>' + jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net + '</li>'
-=======
-                var divID = "launchchoice" + i;
-                var divOnClick = "loadSecondJSON(' + launchurl + ')"
-                var divInnerHTML = "jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net + ' <br><br>'"
-                createDiv(divID, divInnerHTML,divOnClick);
-                moveDivsToBottom();
->>>>>>> parent of d3eeb5e... Oopsie
               }
               divInnerHTML = divInnerHTML + '</ul>';
               createDiv(divID, divInnerHTML);
