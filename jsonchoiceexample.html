@@ -250,7 +250,7 @@
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
                 var divID = "launchchoice" + i;
                 var divInnerHTML = "<ul>";
-                divInnerHTML = divInnerHTML + '<li><button align = "right" type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Details </button> ' + jsonObj.launches[i].lsp.name + ' launch number '
+                divInnerHTML = divInnerHTML + '<li onclick = "loadSecondJSON(' + launchurl + ')"> ' + jsonObj.launches[i].lsp.name + ' launch number '
                   + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net
                   + ' </li>';
                 divInnerHTML = divInnerHTML + "</ul>";
