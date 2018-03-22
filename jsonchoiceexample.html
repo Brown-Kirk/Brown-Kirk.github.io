@@ -241,6 +241,10 @@
               divInnerHTML = "Would you like to view the launch you selected last time? (Launch #" + launchnumber + ") " + '<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Yes </button> <br><br>';
               var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
               createDiv(divID,divInnerHTML)
+              var divID2 = "launchChoicesList";
+              var divInnerHTML = "<ul id='launchList'></ul>";
+              createDiv(divID2, divInnerHTML2);
+              moveDivsToBottom();
               for(var i in jsonObj.launches) {
                 //Save the number of items in this list as a variable. This is used later to help us remove unused div's
                 sessionStorage.setItem("launchcount",i);
@@ -248,17 +252,14 @@
                 var launchnumber = jsonObj.launches[i].id;
                 //Create the new URL to retrieve detailed information about the selected launch
                 var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
-                var divID2 = "launchChoices";
 
-                  divInnerHTML2 = divInnerHTML2 + '<li onclick = "loadSecondJSON(' + launchurl + ')"> ' + jsonObj.launches[i].lsp.name + ' launch number '
-                  + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net
-                  + ' </li>';
-                createDiv(divID2, divInnerHTML2);
+                var ul = document.getElementById("launchList");
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net));
+                li.setAttribute('onclick','loadSecondJSON(launchurl);'); // for FF
+                li.onclick = function() {loadSecondJSON(launchurl);}; // for IE
+                ul.appendChild(li);
               }
-              var div = document.getElementById("launchChoices");
-              var newInnerHTML = "<ul>" + div.innerHTML + "</ul>";
-              div.innerHTML = newInnerHTML;
-              moveDivsToBottom();
             }
           }
           http_request.open("GET", data_file, true);
