@@ -147,8 +147,8 @@
       border-top: 10px solid #f3f3f3;
       width: 150px;
       height: 150px;
-      -webkit-animation: spin linear infinite; /* Safari */
-      animation: spin linear infinite;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
     }
     /* Safari */
     @-webkit-keyframes spin {
@@ -514,29 +514,29 @@
            while (currentTime + 2000 >= new Date().getTime()) {
            }
         }
+        function loadingCircle() {
+          var ld=(document.all);
+          var ns4=document.layers;
+          var ns6=document.getElementById&&!document.all;
+          var ie4=document.all;
+          if (ns4)
+            ld=document.loading;
+          else if (ns6)
+            ld=document.getElementById("loading").style;
+          else if (ie4)
+            ld=document.all.loading.style;
+            function init()
+            {
+              if(ns4){ld.visibility="hidden";}
+              else if (ns6||ie4) ld.display="none";
+            }
+        }
       </script>
       <title>Space Launch Information Retrieval</title>
     </head>
     <body onload="initialPageLoad()">
-      <div id="loading" class="waiting" style="position:absolute; top:150px;">
+      <div id="loading" class="waiting" onload="loadingCircle()" style="position:absolute; top:150px;">
       </div>
-      <script>
-        var ld=(document.all);
-        var ns4=document.layers;
-        var ns6=document.getElementById&&!document.all;
-        var ie4=document.all;
-        if (ns4)
-          ld=document.loading;
-        else if (ns6)
-          ld=document.getElementById("loading").style;
-        else if (ie4)
-          ld=document.all.loading.style;
-          function init()
-          {
-            if(ns4){ld.visibility="hidden";}
-            else if (ns6||ie4) ld.display="none";
-          }
-        </script>
       <div id="accessibillityButtons">
         <button type = "button" onclick = "changeColors('white','black')">High Contrast </button>
         <button type = "button" onclick = "changeColors('black','ecdaa3')">Sepia </button>
