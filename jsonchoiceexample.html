@@ -138,6 +138,9 @@
       from {top: 200px;}
       to {top: -500px;}
     }
+    ul li.hover {
+        font: bold;
+    }
     .waiting {
       border: 10px solid #9D2235;
       border-radius: 50%;
@@ -349,7 +352,6 @@
         function initialPageLoad() {
           init();
           sleep();
-          document.body.style.width = '800px';
           moveDivsToBottom();
           hideExplanation();
         }
