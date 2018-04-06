@@ -140,8 +140,7 @@
     .launchchoice:hover {
       font-weight: 900;
       font-size: 150%;
-      color: blue;
-      transition: font-weight 1s ease-in-out, font-size 1s ease-in-out, color 1s ease-in-out;
+      transition: font-weight 1s ease-in-out, font-size 1s ease-in-out;
     }
     .waiting {
       border: 10px solid #9D2235;
@@ -354,6 +353,21 @@
           document.body.style.width = '800px';
           moveDivsToBottom();
           hideExplanation();
+          textColor = sessionStorage.getItem("textColor");
+          backgroundColor = sessionStorage.getItem("backgroundColor")
+          if(textColor == null) {
+            textColor = "black";
+          }
+          else {
+            //Do nothing
+          }
+          if(backgroundColor == null) {
+            backgroundColor = "black";
+          }
+          else {
+            //Do nothing
+          }
+          changeColors(textColor,backgroundColor);
         }
         function createCanvas(rocketImage) {
           var c = document.getElementById("myCanvas");
@@ -490,6 +504,8 @@
               tagToChange[i].style.color = text;
             }
           document.body.style.backgroundColor = background;
+          sessionStorage.setItem("textColor",text);
+          sessionStorage.setItem("backgroundColor",background);
         }
         function createDiv (divID, divInnerHTML) {
           //Create a new Div
@@ -500,6 +516,9 @@
           div.innerHTML = divInnerHTML;
           //Add what we just created to the div element
           document.body.appendChild(div);
+          textColor = sessionStorage.getItem("textColor");
+          backgroundColor = sessionStorage.getItem("backgroundColor")
+          changeColors(textColor,backgroundColor);
         }
         function removeDiv(divName) {
           var div = document.getElementById(divName);
