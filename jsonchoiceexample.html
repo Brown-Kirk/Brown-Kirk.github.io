@@ -2,10 +2,12 @@
   <meta content="width=device-width, initial-scale=1">
   <style type="text/css">
     canvas:hover {
+        /* Start the shake animation and make the animation last for 0.5 seconds */
         animation: shake 18s;
+        /* When the animation is finished, start again */
         animation-iteration-count: 1;
     }
-@keyframes shake {
+    @keyframes shake {
         0% { transform: translate(1px, 1px) rotate(0deg); }
         0.3% { transform: translate(-1px, -2px) rotate(-1deg); }
         0.6% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -135,9 +137,6 @@
       from {top: 200px;}
       to {top: -500px;}
     }
-    li:hover {
-        font-weight: bold;
-    }
     .waiting {
       border: 10px solid #9D2235;
       border-radius: 50%;
@@ -147,6 +146,7 @@
       -webkit-animation: spin 2s linear infinite; /* Safari */
       animation: spin 2s linear infinite;
     }
+    /* Safari */
     @-webkit-keyframes spin {
       0% { -webkit-transform: rotate(0deg); }
       100% { -webkit-transform: rotate(360deg); }
@@ -166,8 +166,13 @@
   <head>
       <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
       <script type = "application/javascript">
-
-        function getLaunches() {
+        /*The AJAX code is adapted from gtjames.github.io . The general structure is his, what I do with it is mine.
+        I wanted an example of retrieving a plain text file, but wanted it to do something. So, I put the URL of where I
+        want to pull my JSON file from in a txt file, and dropped that on my server. Using the getFileFromServer function,
+        I retrieve that file and insert the value (the URL in the file) into the loadJSON function as the source for the data_file
+        variable.
+        */
+        function getLaunches(url, divID, isJSON) {
           init();
           hideVideo();
           removeDiv("details");
@@ -178,12 +183,18 @@
           getFileFromServer('/ajaxtextfile.txt', 'Textdiv', false);
         }
         function getFileFromServer(url, divID, isJSON){
+          //setting a new instance of XMLHttpRequest
         	var ajaxtextvalue = new XMLHttpRequest();
+          //Begin monitoring for a response from the server
           ajaxtextvalue.onreadystatechange = function() {
-        		if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
-        			var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
+            //When a the server is ready and sends a response
+    				if (ajaxtextvalue.readyState == 4 && ajaxtextvalue.status == 200)
+              //Take that response and assign it to the launchURLValue variable
+    					var launchURLValue = (isJSON) ? JSON.parse(response) : ajaxtextvalue.responseText;
+              //Call the loadJSON function using that variable
               loadJSON(launchURLValue);
     			}
+          //Send the get request
         	ajaxtextvalue.open("GET", url, true);
         	ajaxtextvalue.send();
         }
@@ -213,7 +224,6 @@
           }
           //Again, watching for the ready state to change so we can receive the JSON file
           http_request.onreadystatechange = function(){
-
             if (http_request.readyState == 4  ){
               //Parse the JSON file and assign the new object to the jsonObj variable
               var jsonObj = JSON.parse(http_request.responseText);
@@ -228,23 +238,18 @@
               divInnerHTML = "Would you like to view the launch you selected last time? (Launch #" + launchnumber + ") " + '<button type = "button" onclick = "loadSecondJSON(' + launchurl + ')">Yes </button> <br><br>';
               var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
               createDiv(divID,divInnerHTML)
-              var divID2 = "launchChoicesList";
-              var divInnerHTML = "<ul id='launchList'></ul>";
-              createDiv(divID2, divInnerHTML);
-              moveDivsToBottom();
-              var ul = document.getElementById("launchList");
               for(var i in jsonObj.launches) {
                 //Save the number of items in this list as a variable. This is used later to help us remove unused div's
                 sessionStorage.setItem("launchcount",i);
                 //Get the launch number from the JSON file
                 var launchnumber = jsonObj.launches[i].id;
                 //Create the new URL to retrieve detailed information about the selected launch
-                var launchurl = "https://launchlibrary.net/1.3/launch/" + launchnumber ;
-                var li = document.createElement("li");
-                li.setAttribute('onclick','loadSecondJSON(launchurl);'); // for FF
-                li.onclick = function() {loadSecondJSON(launchurl);}; // for IE
-                li.appendChild(document.createTextNode(jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net));
-                ul.appendChild(li);
+                var launchurl = "'https://launchlibrary.net/1.3/launch/" + launchnumber + "'";
+                var divID = "launchchoice" + i;
+                var divOnClick = "loadSecondJSON(' + launchurl + ')"
+                var divInnerHTML = "jsonObj.launches[i].lsp.name + ' launch number ' + launchnumber + ' is scheduled for ' + jsonObj.launches[i].net + ' <br><br>'"
+                createDiv(divID, divInnerHTML,divOnClick);
+                moveDivsToBottom();
               }
             }
           }
@@ -285,7 +290,6 @@
               removeDiv("launchchoicea");
               removeDiv("explanation");
               removeDiv("explainInstructions");
-              removeDiv("launchChoicesList");
               do {
                 var launchelementID = "launchchoice" + launchcount;
                 removeDiv(launchelementID);
@@ -311,7 +315,7 @@
               var rawJSON = JSON.stringify(jsonObj2);
               //Creating each paragraph
               var launchinfo = '<h2>Launch Info</h2><p> On ' + launchdate + ', ' + rocketagency + ' will launch a ' + rocketname + ' rocket from ' + launchsite + '. ' + missiondetails + '</p>';
-              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
+              var rocketImageCanvas = '<p><b>Mouse over the rocket to make it launch!</b></p><canvas onmouseover="rocketSound.play()" id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>';
               var divInnerHTML = launchinfo + rocketImageCanvas;
               var divID = "details";
               createDiv(divID,divInnerHTML);
@@ -474,13 +478,16 @@
             }
           document.body.style.backgroundColor = background;
         }
-        function createDiv (divID, divInnerHTML) {
+        function createDiv (divID, divInnerHTML, divOnClick) {
           //Create a new Div
           var div = document.createElement('div');
           //Assign an ID to the div
           div.id = divID;
           //Create the content to be displayed in the new div
           div.innerHTML = divInnerHTML;
+          if(divOnClick != "none") {
+              div.onclick = divOnClick;
+          }
           //Add what we just created to the div element
           document.body.appendChild(div);
         }
